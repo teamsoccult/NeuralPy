@@ -98,31 +98,23 @@ def linear_load(filename):
 
 json_string = linear_load(filename)
 
+### NEEDS CODE FROM VICTOR:
 
-
-def linear_save(filename, network):
+#def linear_save(filename, network):
 
 
 ### G):
 def image_to_vector(image):
-    
     '''Standardize image to be a single list (image vector).
     Assumes that the values of the image is between [0, 255].
     Returns a list of floats between [0,1]. '''
-
     return [(item)/(255) for sublist in image for item in sublist]
+
 
 
 ### H)
 
-
-
-
-### SOMETHING COMPLETELY DIFFERENT:
-
-list_matrix = [[1,2,3],[2,3,4],[2,3,5]]
-
-list_matrix2 = [[4,3,2],[5,3,2],[1,2,4]]
+### CLASS OF MATRIX
 
 class Matrix:
 
@@ -177,7 +169,6 @@ class Matrix:
 
                 for j in range(len(other.matrix[0])):
                     sum_of_matrices +=  self.matrix[m][j] * next(B_cols)
-                    print(sum_of_matrices)
                 C[m].append(sum_of_matrices)
                 sum_of_matrices = 0
 
@@ -194,27 +185,67 @@ class Matrix:
                 yield j[i] 
 
 
-matrix_test = Matrix(list_matrix)
+### TESTING THE MATRIX:
 
-matrix_test.scalar_multiplication(3)
+##INITIALIZING:
+list_matrix = [[1,2,3],[2,3,4],[2,3,5]]
 
-matrix_test2 = Matrix(list_matrix2)
+list_matrix2 = [[4,3,2],[5,3,2],[1,2,4]]
 
-matrix_test2.matrix
+matrix1 = Matrix(list_matrix)
+matrix2 = Matrix(list_matrix2)
 
-matrix_test.add(matrix_test2)
+### adding:
 
-matrix_test.matrix
+matrix1.add(matrix2)
 
-ok = matrix_test.gen_row()
+### subtracting:
 
-matrix_test.matrix
-matrix_test2.matrix
+matrix1.sub(matrix2)
 
-matrix_test.multiply(matrix_test2)
+### scalar multi:
+matrix1.scalar_multiplication(3)
 
-next(ok)
+### matrix mult:
+matrix1.multiply(matrix2)
 
-okay = matrix_test.gen_col()
+### I):
 
-next(okay)
+def mean_square_error(U, V):
+    if not isinstance(U, list) or not isinstance(V, list):
+        raise TypeError("Input must be lists.")
+    vector_sum = 0
+    for i in range(len(U)):
+        vector_sum += (V[i]-U[i])**2
+        print(vector_sum)
+    return vector_sum/len(U)
+
+### CHECK EXAMPLE:
+mean_square_error([1,2,3,4], [3,1,3,2]) #checks out 
+
+### CHECK ASSERTIONS
+mean_square_error([1,2,3,4], 5) #checks out
+
+### J):
+
+V = [1,2,3,4]
+
+def argmax(V): ### inspired by https://stackoverflow.com/questions/2474015/getting-the-index-of-the-returned-max-or-min-item-using-max-min-on-a-list
+    if not isinstance(V, list):
+        raise TypeError("Input must be a list.")
+    
+    return V.index(max(V))
+
+#CHECK EXAMPLE:
+argmax([6, 2, 7, 10, 5]) #checks out
+
+### CHECK ASSERTIONS
+argmax(3) #checks out
+
+### K):
+def categorical(label, classes = 10):
+    return [0 if x != label else 1 for x in range(classes)]
+
+### CHECK EXAMPLE:
+categorical(3) #checks out
+
