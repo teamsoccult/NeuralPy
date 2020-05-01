@@ -1,7 +1,8 @@
 import struct
 
 ### TASK B)
-### TASK TREE ##
+### TASK THREE ##
+### TASK FOUR ###
 
 filename = {'images' : 't10k-labels.idx1-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
 
