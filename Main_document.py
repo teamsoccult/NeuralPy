@@ -1,4 +1,4 @@
-import struct
+import struct as st
 
 ### TASK B)
 
@@ -12,13 +12,13 @@ def read_labels(filename):
     '''
     with open(filename, 'rb') as f:
         f.seek(2) #start after the 2 zeroes
-        magic = struct.unpack('>H',f.read(2)) #magic number as hex digit
-        if magic[0] == 2049:
-            print('Hurray! The Magic Number is 2049!')
-        f.seek(6) #offset 
-        test = struct.unpack('>H', f.read(2)) #number of items
+        magic, zeros2, no_items = st.unpack('>HHH',f.read(6)) #magic number as hex digit
+        if magic == 2049:
+            print(f'The Magic Number is {magic}!')
+        else:
+            print(f"The magic number is {magic}, which is not 2049.")
         f.seek(8)
-        labels = struct.unpack('>10000B', f.read(10000))
+        labels = st.unpack(f">{no_items}B", f.read(no_items))
         return list(labels)
 
 labels = read_labels(filename['images'])
@@ -37,24 +37,18 @@ def read_image(filename):
     Returns a list of the image data and print message if the magic number is 2051.
     '''
     with open(filename, 'rb') as f:
-        #zero, data_type, dims = struct.unpack('>H2B', f.read(4))
-        #shape = tuple(struct.unpack('>I', f.read(4))[0] for d in range(dims))
         f.seek(2) #start after the 2 zeroes
-        magic = struct.unpack('>H',f.read(2)) #magic number as hex digit
-        if magic[0] == 2051:
-            print('Hurray! The Magic Number is 2049!') 
-        f.seek(6)
-        noIm = struct.unpack('>H', f.read(2)) #number of items
-        f.seek(10)
-        noR = struct.unpack('>H', f.read(2))
-        f.seek(14)
-        noC = struct.unpack('>H', f.read(2))
+        magic, zeros2, noIm, zeros3, noR, zeros4, noC = st.unpack('>HHHHHHH', f.read(14)) #magic number as hex digit
+        if magic == 2051:
+            print(f'The Magic Number is {magic}!')
+        else:
+            print(f"The Magic Number is {magic}, and not 2051") 
 
         images = list()
 
-        for i in range(noIm[0]):
+        for i in range(noIm):
             image = list()
-            for j in range(noR[0]):
+            for j in range(noR):
                 row = list(struct.unpack(">28B", f.read(28)))
                 image.append(row)
             images.append(image)
@@ -67,6 +61,8 @@ images = read_image(filename['images'])
 
 import matplotlib.pyplot as plt
 
+### D):
+
 ### DIFFERENT APPROACH: (INDEXES)
 # should probably be done using map instead (cater it to 1 picture instead)
 
@@ -78,39 +74,51 @@ def plot_images(images, labels, indexes = [0]):
         axs[i].set_title(labels[indexes[i]])
     plt.show()
 
-plot_images(images, labels, [0, 4, 5, 6, 8, 14, 1, 56, 32, 123, 12])
+plot_images(images, labels, [0, 4, 5, 6, 8])
 
-def plot_image(image, label):
-    plt.imshow(image, cmap = "binary")
-    plt.axis("off")
-    plt.title(label)
-    return plt.show()
+#def plot_image(image, label):
+   # plt.imshow(image, cmap = "binary")
+    #plt.axis("off")
+    #plt.title(label)
+    #return plt.show()
 
-map(plot_image(images[10], labels[10]))
+#map(plot_image, (images[1:2], labels[1:2]))
 
 ### F):
 
 import json
+import os
 
 filename = "mnist_linear.weights"
 
 def linear_load(filename):
-    if filename:
+    try:
         with open(filename, "r") as f:
             json_string = json.load(f)
-    else:
-        print("Cannot find file in the directory. \nPlease check the filename and the pathing to said filename.")
-    return json_string
+            return json_string
+    except FileNotFoundError:
+        print(f"Cannot find {filename} in the directory. \nPlease check the filename and the pathing to said filename.")
 
 json_string = linear_load(filename)
 
-### NEEDS CODE FROM VICTOR:
+### RETURN TO LINEAR SAVE - CONSIDER ALSO MKAING FILENAME A STRING IF IT IS NOT:
 
-#def linear_save(filename, network):
+def linear_save(filename, network): ## inspired by https://stackoverflow.com/questions/42718922/how-to-stop-overwriting-a-file?fbclid=IwAR3osjuyuJTJtvP9wqpBsuBQz8WWTlKmOSpgAmMhn5qXETZ6po7m58GHyAA
+    flag = True
+    while flag:
+        if os.path.isfile(filename):
+            response = input(f"There is already a file named {filename}\nOverwrite? (Yes/No)")
+            if response.lower() != "yes":
+                break
+        network = json.dumps(network)
+        with open(filename, "w") as f:
+            f.write(network)
+            flag = False
 
+linear_save('tommy', json_string)
 
 ### G):
-def image_to_vector(image):
+def image_to_vector(image): #inspired by https://stackoverflow.com/questions/952914/how-to-make-a-flat-list-out-of-list-of-lists
     '''Standardize image to be a single list (image vector).
     Assumes that the values of the image is between [0, 255].
     Returns a list of floats between [0,1]. '''
@@ -119,6 +127,13 @@ def image_to_vector(image):
 ### H)
 
 ### IMPORTING MATRIX CLASS FROM MATRIX CLASS DOCUMENT - CALLING IT M:
+
+def dim(V):
+    if not type(V) == list:
+        return []
+    return [len(V)] + dim(V[0])
+
+## https://stackoverflow.com/questions/17531796/find-the-dimensions-of-a-multidimensional-python-array ##
 
 import Matrix_class as M
 
@@ -150,13 +165,13 @@ matrix1.multiply(matrix2)
 
 ### I):
 
+#also assert that both should be of equal length
 def mean_square_error(U, V):
     if not isinstance(U, list) or not isinstance(V, list):
         raise TypeError("Input must be lists.")
     vector_sum = 0
     for i in range(len(U)):
         vector_sum += (V[i]-U[i])**2
-        print(vector_sum)
     return vector_sum/len(U)
 
 ### CHECK EXAMPLE:
