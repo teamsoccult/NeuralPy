@@ -5,9 +5,12 @@ import struct
 filename = {'images' : 't10k-labels.idx1-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
 
 def read_labels(filename):
+    '''Using the struct.unpack function, this function reads the labels from
+    MNIST-data. Assumes that the file is in the same folder as this python document.
+    Assumes that the number of labels is 10000.
+    Returns list of the labels, and a print message if the magic number is 2049.
+    '''
     with open(filename, 'rb') as f:
-        #zero, data_type, dims = struct.unpack('>H2B', f.read(4))
-        #shape = tuple(struct.unpack('>I', f.read(4))[0] for d in range(dims))
         f.seek(2) #start after the 2 zeroes
         magic = struct.unpack('>H',f.read(2)) #magic number as hex digit
         if magic[0] == 2049:
@@ -28,6 +31,11 @@ filename = {'images' : 't10k-images.idx3-ubyte' ,'labels' : 'train-images.idx3-u
 
 
 def read_image(filename):
+    '''Using the struct.unpack function, this function reads the image data
+    from the MNIST-database. Assumes that the data is stored in the same folder
+    as this document.
+    Returns a list of the image data and print message if the magic number is 2051.
+    '''
     with open(filename, 'rb') as f:
         #zero, data_type, dims = struct.unpack('>H2B', f.read(4))
         #shape = tuple(struct.unpack('>I', f.read(4))[0] for d in range(dims))
@@ -35,37 +43,27 @@ def read_image(filename):
         magic = struct.unpack('>H',f.read(2)) #magic number as hex digit
         if magic[0] == 2051:
             print('Hurray! The Magic Number is 2049!') 
-        noIm = struct.unpack('>HH', f.read(4)) #number of items
-        noR = struct.unpack('>HH', f.read(4))
-        noC = struct.unpack('>HH', f.read(4))
-        labels = struct.unpack('>10000B', f.read(10000))
-        return list(labels)
+        f.seek(6)
+        noIm = struct.unpack('>H', f.read(2)) #number of items
+        f.seek(10)
+        noR = struct.unpack('>H', f.read(2))
+        f.seek(14)
+        noC = struct.unpack('>H', f.read(2))
 
+        images = list()
 
-with open(filename['images'], 'rb') as f:
-    #zero, data_type, dims = struct.unpack('>H2B', f.read(4))
-    #shape = tuple(struct.unpack('>I', f.read(4))[0] for d in range(dims))
-    f.seek(2) #start after the 2 zeroes
-    magic = struct.unpack('>H',f.read(2)) #magic number as hex digit
-    if magic[0] == 2051:
-        print('Hurray! The Magic Number is 2049!') 
-    f.seek(6)
-    noIm = struct.unpack('>H', f.read(2)) #number of items
-    f.seek(10)
-    noR = struct.unpack('>H', f.read(2))
-    f.seek(14)
-    noC = struct.unpack('>H', f.read(2))
-    #noD = noIm[0] * noR[0] * noC[0]
+        for i in range(noIm[0]):
+            image = list()
+            for j in range(noR[0]):
+                row = list(struct.unpack(">28B", f.read(28)))
+                image.append(row)
+            images.append(image)
+        
+    return images
 
-    images = list()
+images = read_image(filename['images'])
 
-    for i in range(noIm[0]):
-        image = list()
-        for j in range(noR[0]):
-            row = list(struct.unpack(">28B", f.read(28)))
-            image.append(row)
-        images.append(image)
-
+### IMPORT MATPLOTLIB.PYPLOT AS PLT:
 
 import matplotlib.pyplot as plt
 
@@ -81,6 +79,14 @@ def plot_images(images, labels, indexes = [0]):
     plt.show()
 
 plot_images(images, labels, [0, 4, 5, 6, 8, 14, 1, 56, 32, 123, 12])
+
+def plot_image(image, label):
+    plt.imshow(image, cmap = "binary")
+    plt.axis("off")
+    plt.set_title(label)
+    return plt.show()
+
+plot_image
 
 ### F):
 
