@@ -110,8 +110,6 @@ def image_to_vector(image):
     Returns a list of floats between [0,1]. '''
     return [(item)/(255) for sublist in image for item in sublist]
 
-
-
 ### H)
 
 ### CLASS OF MATRIX
@@ -249,3 +247,4 @@ def categorical(label, classes = 10):
 ### CHECK EXAMPLE:
 categorical(3) #checks out
 
+## WHAAAAT IVE DOOOOOOOOONE
