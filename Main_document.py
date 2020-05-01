@@ -248,3 +248,5 @@ def categorical(label, classes = 10):
 categorical(3) #checks out
 
 ## WHAAAAT IVE DOOOOOOOOONE
+
+### I FACEEEEE MY SEEEEELFFFFF
