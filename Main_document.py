@@ -1,8 +1,6 @@
 import struct
 
 ### TASK B)
-### TASK THREE ##
-### TASK FOUR ###
 
 filename = {'images' : 't10k-labels.idx1-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
 
@@ -17,7 +15,7 @@ def read_labels(filename):
         magic = struct.unpack('>H',f.read(2)) #magic number as hex digit
         if magic[0] == 2049:
             print('Hurray! The Magic Number is 2049!')
-        f.seek(6) #offset
+        f.seek(6) #offset 
         test = struct.unpack('>H', f.read(2)) #number of items
         f.seek(8)
         labels = struct.unpack('>10000B', f.read(10000))
@@ -44,7 +42,7 @@ def read_image(filename):
         f.seek(2) #start after the 2 zeroes
         magic = struct.unpack('>H',f.read(2)) #magic number as hex digit
         if magic[0] == 2051:
-            print('Hurray! The Magic Number is 2049!')
+            print('Hurray! The Magic Number is 2049!') 
         f.seek(6)
         noIm = struct.unpack('>H', f.read(2)) #number of items
         f.seek(10)
@@ -60,7 +58,7 @@ def read_image(filename):
                 row = list(struct.unpack(">28B", f.read(28)))
                 image.append(row)
             images.append(image)
-
+        
     return images
 
 images = read_image(filename['images'])
@@ -85,10 +83,10 @@ plot_images(images, labels, [0, 4, 5, 6, 8, 14, 1, 56, 32, 123, 12])
 def plot_image(image, label):
     plt.imshow(image, cmap = "binary")
     plt.axis("off")
-    plt.set_title(label)
+    plt.title(label)
     return plt.show()
 
-plot_image
+map(plot_image(images[10], labels[10]))
 
 ### F):
 
@@ -162,7 +160,7 @@ def mean_square_error(U, V):
     return vector_sum/len(U)
 
 ### CHECK EXAMPLE:
-mean_square_error([1,2,3,4], [3,1,3,2]) #checks out
+mean_square_error([1,2,3,4], [3,1,3,2]) #checks out 
 
 ### CHECK ASSERTIONS
 mean_square_error([1,2,3,4], 5) #checks out
@@ -174,7 +172,7 @@ V = [1,2,3,4]
 def argmax(V): ### inspired by https://stackoverflow.com/questions/2474015/getting-the-index-of-the-returned-max-or-min-item-using-max-min-on-a-list
     if not isinstance(V, list):
         raise TypeError("Input must be a list.")
-
+    
     return V.index(max(V))
 
 #CHECK EXAMPLE:
