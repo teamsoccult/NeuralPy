@@ -197,4 +197,11 @@ def categorical(label, classes = 10):
 ### CHECK EXAMPLE:
 categorical(3) #checks out
 
-#testy. 
+### L)
+
+def predict(network, image):
+
+'''
+Write a function predict(network, image) that returns xA + b,
+given a network (A, b) and an image vector.
+'''
