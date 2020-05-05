@@ -73,10 +73,10 @@ def multiply(S, O):
     return C
 
 def transpose(S):
-    A = gen_row(S)
-    rows, columns = dim(S) # maybe smart.
-    C = [[] for i in range(columns)] # empty list
-    for i in range(rows): #will have the opposite dimensionality.
-        for j in range(columns):
+    A = gen_col(S)
+    columns, rows = dim(S) # maybe smart.
+    C = [[] for i in range(rows)] # empty list
+    for i in range(columns): #will have the opposite dimensionality.
+        for j in range(rows):
             C[j].append(next(A))
     return(C)

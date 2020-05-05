@@ -163,6 +163,10 @@ M.scalar_multiplication(list_matrix3, 4)
 ### matrix mult:
 M.multiply(list_matrix, list_matrix2)
 
+### transpose
+M.transpose(list_matrix4)
+M.transpose(list_matrix)
+
 ### I):
 
 #also assert that both should be of equal length
