@@ -135,7 +135,7 @@ def dim(V):
 
 ## https://stackoverflow.com/questions/17531796/find-the-dimensions-of-a-multidimensional-python-array ##
 
-import Matrix_class as M
+import matrix_functions as M
 
 ### TESTING THE MATRIX:
 
@@ -146,22 +146,19 @@ list_matrix2 = [[4,3,2],[5,3,2],[1,2,4]]
 
 ### INSTANCES OF MATRIX:
 
-matrix1 = M.Matrix(list_matrix)
-matrix2 = M.Matrix(list_matrix2)
-
 ### adding:
 
-matrix1.add(matrix2)
+M.add(list_matrix, list_matrix2)
 
 ### subtracting:
 
-matrix1.sub(matrix2)
+M.sub(list_matrix, list_matrix2)
 
-### scalar multi:
-matrix1.scalar_multiplication(3)
+### scalar multiplication:
+M.scalar_multiplication(list_matrix, 4)
 
 ### matrix mult:
-matrix1.multiply(matrix2)
+M.multiply(list_matrix, list_matrix2)
 
 ### I):
 

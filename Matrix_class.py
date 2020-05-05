@@ -2,6 +2,7 @@ class Matrix:
 
     def __init__(self, L):
         self.matrix = L
+        self.dim = dim(self.matrix)
 
     #consider
     def dim(V):
@@ -10,9 +11,9 @@ class Matrix:
         return [len(V)] + dim(V[0])
 
     def add(self, other):
-        if dim(self.dim) != dim(other.matrix):
+        if self.dim != other.dim :
             raise ValueError(" The two matrices do not have the same dimensions.")
-        rows, columns = dim(self.matrix)
+        rows, columns = self.dim
         A = self.gen_row()
         B = other.gen_row()
         C = [[] for i in range(rows)]
@@ -22,9 +23,9 @@ class Matrix:
         return C
     
     def sub(self, other):
-        if dim(self.matrix) != dim(other.matrix):
+        if self.dim != other.dim:
             raise ValueError("The two matrices do not have the same dimensions.")
-        rows, columns = dim(self.matrix)
+        rows, columns = self.dim 
         A = self.gen_row()
         B = other.gen_row()
         C = [[] for i in range(rows)]
@@ -35,7 +36,7 @@ class Matrix:
 
     def scalar_multiplication(self, scalar):
         generator_self = self.gen_row()
-        rows, columns = dim(self.matrix)
+        rows, columns = self.dim
         C = [[] for i in range(rows)]
         for i in range(rows):
             for j in range(columns):
@@ -44,8 +45,8 @@ class Matrix:
 
 
     def multiply(self, other):
-        self_rows, self_columns = dim(self.matrix)
-        other_rows, other_columns = dim(other.matrix)
+        self_rows, self_columns = self.dim
+        other_rows, other_columns = other.dim
 
         if self_columns != other_rows:
             raise ValueError('''The two matrices do not match for matrix multiplication.
@@ -66,7 +67,7 @@ class Matrix:
 
     def transpose(self):
         A = self.gen_row()
-        rows, columns = dim(self.matrix) # maybe smart.
+        rows, columns = self.dim # maybe smart.
         C = [[] for i in range(columns)] # empty list
         for i in range(rows): #will have the opposite dimensionality.
             for j in range(columns):
@@ -83,3 +84,26 @@ class Matrix:
             for j in self.matrix:
                 yield j[i] 
 
+##INITIALIZING:
+list_matrix = [[1,2,3],[2,3,4],[2,3,5]]
+
+list_matrix2 = [[4,3,2],[5,3,2],[1,2,4]]
+
+### INSTANCES OF MATRIX:
+
+matrix1 = Matrix(list_matrix)
+matrix2 = Matrix(list_matrix2)
+
+### adding:
+
+matrix1.add(matrix2)
+
+### subtracting:
+
+matrix1.sub(matrix2)
+
+### scalar multi:
+matrix1.scalar_multiplication(3)
+
+### matrix mult:
+matrix1.multiply(matrix2)
