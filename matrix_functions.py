@@ -1,10 +1,10 @@
 ### HELPER FUNCTIONS
 
 ## Dimensions
-def dim(S):
+def dim_recursive(S):
     if not type(S) == list:
         return []
-    return [len(S)] + dim(S[0])
+    return dim_len([len(S)] + dim(S[0]))
 
 ## Generators
 def gen_col(S):

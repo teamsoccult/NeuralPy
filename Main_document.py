@@ -140,9 +140,15 @@ import matrix_functions as M
 
 ### TESTING THE MATRIX:
 
+## test dim_decorator
+
+M.dim([1,2,3,4])
+
 ##INITIALIZING:
 list_matrix = [[1,2,3],[2,3,4],[2,3,5]]
 list_matrix2 = [[4,3,2],[5,3,2],[1,2,4]]
+
+M.dim(list_matrix)
 
 list_matrix3 = [[1,1,1,1], [2,2,2,2], [3,3,3,3]]
 list_matrix4 = [[4,4,4,4], [5,5,5,5], [6,6,6,6]]
@@ -213,8 +219,8 @@ image_vector = image_to_vector(images[0])
 
 def predict(network, image):
     A, b = network
-    multiplied = M.multiply(image, A)
-    and_then_this = M.add(multiplied, b)
+    xA = M.multiply(image, A)
+    return M.add(xA, b)
 
 predict(test, image_vector)
 dim(image_vector)
