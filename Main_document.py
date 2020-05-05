@@ -155,10 +155,10 @@ M.add(list_matrix3, list_matrix4)
 M.add(list_matrix, list_matrix2)
 
 ### subtracting:
-M.sub(list_matrix, list_matrix2)
+M.sub(list_matrix4, list_matrix3)
 
 ### scalar multiplication:
-M.scalar_multiplication(list_matrix, 4)
+M.scalar_multiplication(list_matrix3, 4)
 
 ### matrix mult:
 M.multiply(list_matrix, list_matrix2)

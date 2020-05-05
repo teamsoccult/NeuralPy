@@ -43,11 +43,11 @@ def sub(S, O):
     return C
 
 def scalar_multiplication(S, scalar):
-    generator_self = gen_row(S)
-    rows, columns = dim(S)
-    C = [[] for i in range(rows)]
-    for i in range(rows):
-        for j in range(columns):
+    generator_self = gen_col(S)
+    columns, rows = dim(S)
+    C = [[] for i in range(columns)]
+    for i in range(columns):
+        for j in range(rows):
             C[i].append(next(generator_self)*scalar)
     return C
 
