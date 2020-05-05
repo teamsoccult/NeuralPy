@@ -63,12 +63,12 @@ def multiply(S, O):
 
     sum_of_matrices = 0
 
-    for m in range(self_rows):
+    for m in range(other_columns):
         B_cols = gen_col(O)
-        for i in range(self_columns):
+        for i in range(self_rows):
             for j in range(other_rows):
                 sum_of_matrices +=  S[j][m] * next(B_cols)
-            C[m].append(sum_of_matrices)
+            C[i].append(sum_of_matrices)
             sum_of_matrices = 0
     return C
 
