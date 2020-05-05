@@ -1,9 +1,12 @@
 ### HELPER FUNCTIONS
+
+## Dimensions
+
 def dim(S):
-    great = dim_recursive(S)
-    if len(great) < 2:
-        great.insert(0,1)
-    return great
+    dim_list = dim_recursive(S)
+    if len(dim_list) < 2:
+        dim_list.insert(0,1)
+    return dim_list
 
 def dim_recursive(S):
     if not type(S) == list:
