@@ -204,9 +204,6 @@ def suck_my_dick(V, U):
 
 nuces = "top streamer eu"
 
-<<<<<<< HEAD
 "wip in the mingzi's top priority bah"
-=======
 def stop_being_green(V, U):
     print("now we the talk")
->>>>>>> fca3a49eaa64d4bb0a363ed1177a58827bf50136
