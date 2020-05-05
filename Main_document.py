@@ -1,7 +1,7 @@
 import struct as st
 
 ### TASK B)
-### TSK B) 
+### TSK B)
 
 filename = {'images' : 't10k-labels.idx1-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
 
@@ -142,17 +142,14 @@ import matrix_functions as M
 
 ##INITIALIZING:
 list_matrix = [[1,2,3],[2,3,4],[2,3,5]]
-
 list_matrix2 = [[4,3,2],[5,3,2],[1,2,4]]
 
 ### INSTANCES OF MATRIX:
 
 ### adding:
-
 M.add(list_matrix, list_matrix2)
 
 ### subtracting:
-
 M.sub(list_matrix, list_matrix2)
 
 ### scalar multiplication:
@@ -179,7 +176,6 @@ mean_square_error([1,2,3,4], [3,1,3,2]) #checks out
 mean_square_error([1,2,3,4], 5) #checks out
 
 ### J):
-
 V = [1,2,3,4]
 
 def argmax(V): ### inspired by https://stackoverflow.com/questions/2474015/getting-the-index-of-the-returned-max-or-min-item-using-max-min-on-a-list
@@ -200,3 +196,8 @@ def categorical(label, classes = 10):
 
 ### CHECK EXAMPLE:
 categorical(3) #checks out
+
+###
+def suck_my_dick(V, U):
+    if isinstance(list):
+        print("suck big dick")

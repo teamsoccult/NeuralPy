@@ -1,26 +1,23 @@
-### HELPER FUNCTIONS 
+### HELPER FUNCTIONS
 
 ## Dimensions
-
 def dim(S):
     if not type(S) == list:
         return []
     return [len(S)] + dim(S[0])
 
 ## Generators
-
 def gen_row(S):
     for i in S:
         for j in i:
-            yield j 
+            yield j
 
 def gen_col(S):
     for i in range(len(S[0])):
         for j in S:
-            yield j[i] 
+            yield j[i]
 
-### MAIN FUNCTIONS 
-
+### MAIN FUNCTIONS
 def add(S, O):
     if dim(S) != dim(O):
         raise ValueError("The two matrices do not have the same dimensions.")
@@ -30,19 +27,19 @@ def add(S, O):
     C = [[] for i in range(rows)]
     for i in range(rows):
         for j in range(columns):
-            C[i].append(next(A) + next(B))  
+            C[i].append(next(A) + next(B))
     return C
 
 def sub(S, O):
     if dim(S) != dim(O):
         raise ValueError("The two matrices do not have the same dimensions.")
-    rows, columns = dim(S) 
+    rows, columns = dim(S)
     A = gen_row(S)
     B = gen_row(O)
     C = [[] for i in range(rows)]
     for i in range(rows):
         for j in range(columns):
-            C[i].append(next(A) - next(B))  
+            C[i].append(next(A) - next(B))
     return C
 
 def scalar_multiplication(S, scalar):
@@ -54,7 +51,6 @@ def scalar_multiplication(S, scalar):
             C[i].append(next(generator_self)*scalar)
     return C
 
-
 def multiply(S, O):
     self_rows, self_columns = dim(S)
     other_rows, other_columns = dim(O)
@@ -62,7 +58,7 @@ def multiply(S, O):
     if self_columns != other_rows:
         raise ValueError('''The two matrices do not match for matrix multiplication.
     There must be the same number of rows in the first matrix as the number of columns in the second.''')
-    
+
     C = [[] for i in range(self_rows)]
 
     sum_of_matrices = 0
@@ -84,4 +80,3 @@ def transpose(S):
         for j in range(columns):
             C[j].append(next(A))
     return(C)
-
