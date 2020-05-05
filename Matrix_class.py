@@ -19,19 +19,19 @@ class Matrix:
         C = [[] for i in range(rows)]
         for i in range(rows):
             for j in range(columns):
-                C[i].append(next(A) + next(B))  
+                C[i].append(next(A) + next(B))
         return C
-    
+
     def sub(self, other):
         if self.dim != other.dim:
             raise ValueError("The two matrices do not have the same dimensions.")
-        rows, columns = self.dim 
+        rows, columns = self.dim
         A = self.gen_row()
         B = other.gen_row()
         C = [[] for i in range(rows)]
         for i in range(rows):
             for j in range(columns):
-                C[i].append(next(A) - next(B))  
+                C[i].append(next(A) - next(B))
         return C
 
     def scalar_multiplication(self, scalar):
@@ -51,7 +51,7 @@ class Matrix:
         if self_columns != other_rows:
             raise ValueError('''The two matrices do not match for matrix multiplication.
         There must be the same number of rows in the first matrix as the number of columns in the second.''')
-        
+
         C = [[] for i in range(self_rows)]
 
         sum_of_matrices = 0
@@ -73,16 +73,16 @@ class Matrix:
             for j in range(columns):
                 C[j].append(next(A))
         return(C)
-    
+
     def gen_row(self):
         for i in self.matrix:
             for j in i:
-                yield j 
-    
+                yield j
+
     def gen_col(self):
         for i in range(len(self.matrix[0])):
             for j in self.matrix:
-                yield j[i] 
+                yield j[i]
 
 ##INITIALIZING:
 list_matrix = [[1,2,3],[2,3,4],[2,3,5]]

@@ -7,12 +7,12 @@ def dim(S):
     return [len(S)] + dim(S[0])
 
 ## Generators
-def gen_row(S):
+def gen_col(S):
     for i in S:
         for j in i:
             yield j
 
-def gen_col(S):
+def gen_row(S):
     for i in range(len(S[0])):
         for j in S:
             yield j[i]
@@ -52,8 +52,8 @@ def scalar_multiplication(S, scalar):
     return C
 
 def multiply(S, O):
-    self_rows, self_columns = dim(S)
-    other_rows, other_columns = dim(O)
+    self_columns, self_rows = dim(S)
+    other_columns, other_rows = dim(O)
 
     if self_columns != other_rows:
         raise ValueError('''The two matrices do not match for matrix multiplication.
@@ -67,7 +67,7 @@ def multiply(S, O):
         B_cols = gen_col(O)
         for i in range(self_columns):
             for j in range(other_rows):
-                sum_of_matrices +=  S[m][j] * next(B_cols)
+                sum_of_matrices +=  S[j][m] * next(B_cols)
             C[m].append(sum_of_matrices)
             sum_of_matrices = 0
     return C

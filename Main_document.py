@@ -50,7 +50,7 @@ def read_image(filename):
         for i in range(noIm):
             image = list()
             for j in range(noR):
-                row = list(struct.unpack(">28B", f.read(28)))
+                row = list(st.unpack(">28B", f.read(28)))
                 image.append(row)
             images.append(image)
 
@@ -198,8 +198,50 @@ def categorical(label, classes = 10):
 categorical(3) #checks out
 
 ### L)
-
+test = linear_load('mnist_linear.weights')
+images = read_image('train-images.idx3-ubyte')
+image_vector = image_to_vector(images[0])
+len(test[0])
+A, b = test
+A
+b
 def predict(network, image):
+    A, b = network
+    multiplied = M.multiply(image, A)
+    and_then_this = M.add(multiplied, b)
+
+predict(test, image_vector)
+dim(image_vector)
+dim(test)
+
+test1 = [[1,5,3], [1,5,3]]
+test2 = [[1,2], [2,2], [3,2]]
+
+M.multiply(test2, test1)
+test1
+dim(test1)
+dim(test2)
+## multiply ##
+def multiply(S, O):
+    self_columns, self_rows = dim(S)
+    other_columns, other_rows = dim(O)
+
+    if self_columns != other_rows:
+        raise ValueError('''The two matrices do not match for matrix multiplication.
+    There must be the same number of rows in the first matrix as the number of columns in the second.''')
+
+    C = [[] for i in range(self_rows)]
+
+    sum_of_matrices = 0
+
+    for m in range(self_rows):
+        B_cols = gen_col(O)
+        for i in range(self_columns):
+            for j in range(other_rows):
+                sum_of_matrices +=  S[j][m] * next(B_cols)
+            C[m].append(sum_of_matrices)
+            sum_of_matrices = 0
+    return C
 
 '''
 Write a function predict(network, image) that returns xA + b,
