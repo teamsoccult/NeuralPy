@@ -187,7 +187,7 @@ def mean_square_error(U, V):
 mean_square_error([1,2,3,4], [3,1,3,2]) #checks out
 
 ### CHECK ASSERTIONS
-mean_square_error([1,2,3,4], 5) #checks out
+#mean_square_error([1,2,3,4], 5) #checks out
 
 ### J):
 V = [1,2,3,4]
@@ -202,7 +202,7 @@ def argmax(V): ### inspired by https://stackoverflow.com/questions/2474015/getti
 argmax([6, 2, 7, 10, 5]) #checks out
 
 ### CHECK ASSERTIONS
-argmax(3) #checks out
+#argmax(3) #checks out
 
 ### K):
 def categorical(label, classes = 10):
@@ -214,26 +214,48 @@ categorical(3) #checks out
 ### L)
 test = linear_load('mnist_linear.weights')
 images = read_image('train-images.idx3-ubyte')
+labels = read_labels('train-labels.idx1-ubyte')
 image_vector = image_to_vector(images[0])
+
+import matrix_functions2 as M
 
 def predict(network, image):
     A, b = network
-    print(M.dim(A))
-    print(M.dim(b))
-    print(M.dim(image))
     xA = M.multiply(image, A)
     xAb = M.add(xA, b)
     return xAb
 
 predict(test, image_vector)
-dim(image_vector)
-M.dim(test)
 
-M.dim(images[0])
-
-M.dim()
-
+### M)
 '''
-Write a function predict(network, image) that returns xA + b,
-given a network (A, b) and an image vector.
+Create a function evaluate(network, images, labels) that given 
+a list of image vectors and corresponding labels, 
+returns the tuple (predictions, cost, accuracy), 
+where predictions is a list of the predicted labels 
+for the images, cost is the average of mean square errors 
+over all input-output pairs, and accuracy the fraction of 
+inputs where the predicted labels are correct. 
+Apply this to the loaded network and the 10.000 test images
+ in t10k-images. 
+ The accuracy should be around 92%, whereas the cost should be 222 
+ (the cost is very bad since the network was trained to 
+ optimze the cost measure softmax).
+
+Hint. Use your argmax function to convert network output into a label prediction.
 '''
+
+def evaluate(network,images,labels):
+    cost = 0
+    accuracy = 0
+    predictions = []
+    for i in range(len(images)):
+        prediction = predict(network, images[i])
+        predicted_label = argmax(prediction)
+        cost += mean_square_error(prediction, categorical(labels[i]))
+        if predicted_label == labels[i]:
+            accuracy +=1
+        predictions.append(predicted_label)
+    return (predictions, cost/len(images), accuracy/len(images))
+
+evaluate(test, image_vectors, labels)
