@@ -129,15 +129,12 @@ def image_to_vector(image): #inspired by https://stackoverflow.com/questions/952
 
 ### IMPORTING MATRIX CLASS FROM MATRIX CLASS DOCUMENT - CALLING IT M:
 
-def dim(V):
-    if not type(V) == list:
-        return []
-    return [len(V)] + dim(V[0])
-
 ## https://stackoverflow.com/questions/17531796/find-the-dimensions-of-a-multidimensional-python-array ##
 
 import matrix_functions as M
 
+M.dim([[1,2,3],[2,1,2]])
+M.dim([1,2,3])
 ### TESTING THE MATRIX:
 
 ##INITIALIZING:
@@ -211,6 +208,9 @@ test = linear_load('mnist_linear.weights')
 images = read_image('train-images.idx3-ubyte')
 image_vector = image_to_vector(images[0])
 
+S = [1,2]
+M.dim([[1,2],[1,2]])
+len(S)
 def predict(network, image):
     A, b = network
     multiplied = M.multiply(image, A)
@@ -220,8 +220,30 @@ predict(test, image_vector)
 dim(image_vector)
 dim(test)
 
-
+predict(test, image_vector)
 '''
 Write a function predict(network, image) that returns xA + b,
 given a network (A, b) and an image vector.
 '''
+
+
+
+
+## Dimensions
+def enforceFormat(f):
+    def wrapper(*args):
+        result = f(*args)
+        print(result)
+        if len(result) < 2:
+            result.insert(0, 1)
+        return result
+    return wrapper
+
+
+@enforceFormat
+def dim(S):
+    if not type(S) == list:
+        return []
+    return [len(S)] + dim(S[0])
+
+dim([[3,2,1],[3,2,1]])
