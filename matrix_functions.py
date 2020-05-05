@@ -21,24 +21,24 @@ def gen_row(S):
 def add(S, O):
     if dim(S) != dim(O):
         raise ValueError("The two matrices do not have the same dimensions.")
-    rows, columns = dim(S)
-    A = gen_row(S)
-    B = gen_row(O)
-    C = [[] for i in range(rows)]
-    for i in range(rows):
-        for j in range(columns):
+    columns, rows = dim(S)
+    A = gen_col(S)
+    B = gen_col(O)
+    C = [[] for i in range(columns)]
+    for i in range(columns):
+        for j in range(rows):
             C[i].append(next(A) + next(B))
     return C
 
 def sub(S, O):
     if dim(S) != dim(O):
         raise ValueError("The two matrices do not have the same dimensions.")
-    rows, columns = dim(S)
-    A = gen_row(S)
-    B = gen_row(O)
-    C = [[] for i in range(rows)]
-    for i in range(rows):
-        for j in range(columns):
+    columns, rows = dim(S)
+    A = gen_col(S)
+    B = gen_col(O)
+    C = [[] for i in range(columns)]
+    for i in range(columns):
+        for j in range(rows):
             C[i].append(next(A) - next(B))
     return C
 

@@ -144,6 +144,11 @@ import matrix_functions as M
 list_matrix = [[1,2,3],[2,3,4],[2,3,5]]
 list_matrix2 = [[4,3,2],[5,3,2],[1,2,4]]
 
+list_matrix3 = [[1,1,1,1], [2,2,2,2], [3,3,3,3]]
+list_matrix4 = [[4,4,4,4], [5,5,5,5], [6,6,6,6]]
+
+M.add(list_matrix3, list_matrix4)
+
 ### INSTANCES OF MATRIX:
 
 ### adding:
