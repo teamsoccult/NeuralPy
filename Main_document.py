@@ -202,3 +202,5 @@ def categorical(label, classes = 10):
 categorical(3) #checks out
 
 nuces = "top streamer eu"
+
+"wip in the mingzi's top priority bah"
