@@ -218,6 +218,9 @@ image_vector = image_to_vector(images[0])
 
 def predict(network, image):
     A, b = network
+    print(M.dim(A))
+    print(M.dim(b))
+    print(M.dim(image))
     xA = M.multiply(image, A)
     xAb = M.add(xA, b)
     return xAb
@@ -230,10 +233,7 @@ M.dim(images[0])
 
 M.dim()
 
-predict(test, image_vector)
 '''
 Write a function predict(network, image) that returns xA + b,
 given a network (A, b) and an image vector.
 '''
-
-
