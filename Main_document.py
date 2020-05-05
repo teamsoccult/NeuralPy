@@ -200,3 +200,5 @@ def categorical(label, classes = 10):
 
 ### CHECK EXAMPLE:
 categorical(3) #checks out
+
+nuces = "top streamer eu"
