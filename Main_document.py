@@ -196,13 +196,3 @@ def categorical(label, classes = 10):
 
 ### CHECK EXAMPLE:
 categorical(3) #checks out
-
-###
-def suck_my_dick(V, U):
-    if isinstance(list):
-        print("suck big dick")
-
-nuces = "top streamer eu"
-
-def stop_being_green(V, U):
-    print("now we the talk")
