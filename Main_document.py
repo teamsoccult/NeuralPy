@@ -1,6 +1,7 @@
 import struct as st
 
 ### TASK B)
+### TSK B) 
 
 filename = {'images' : 't10k-labels.idx1-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
 
@@ -42,7 +43,7 @@ def read_image(filename):
         if magic == 2051:
             print(f'The Magic Number is {magic}!')
         else:
-            print(f"The Magic Number is {magic}, and not 2051") 
+            print(f"The Magic Number is {magic}, and not 2051")
 
         images = list()
 
@@ -52,7 +53,7 @@ def read_image(filename):
                 row = list(struct.unpack(">28B", f.read(28)))
                 image.append(row)
             images.append(image)
-        
+
     return images
 
 images = read_image(filename['images'])
@@ -175,7 +176,7 @@ def mean_square_error(U, V):
     return vector_sum/len(U)
 
 ### CHECK EXAMPLE:
-mean_square_error([1,2,3,4], [3,1,3,2]) #checks out 
+mean_square_error([1,2,3,4], [3,1,3,2]) #checks out
 
 ### CHECK ASSERTIONS
 mean_square_error([1,2,3,4], 5) #checks out
@@ -187,7 +188,7 @@ V = [1,2,3,4]
 def argmax(V): ### inspired by https://stackoverflow.com/questions/2474015/getting-the-index-of-the-returned-max-or-min-item-using-max-min-on-a-list
     if not isinstance(V, list):
         raise TypeError("Input must be a list.")
-    
+
     return V.index(max(V))
 
 #CHECK EXAMPLE:
