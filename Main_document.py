@@ -50,7 +50,7 @@ def read_image(filename):
         for i in range(noIm):
             image = list()
             for j in range(noR):
-                row = list(struct.unpack(">28B", f.read(28)))
+                row = list(st.unpack(">28B", f.read(28)))
                 image.append(row)
             images.append(image)
 
@@ -197,13 +197,5 @@ def categorical(label, classes = 10):
 ### CHECK EXAMPLE:
 categorical(3) #checks out
 
-###
-def suck_my_dick(V, U):
-    if isinstance(list):
-        print("suck big dick")
-
-nuces = "top streamer eu"
-
-"wip in the mingzi's top priority bah"
-def stop_being_green(V, U):
-    print("now we the talk")
+def predict(network, image):
+    
