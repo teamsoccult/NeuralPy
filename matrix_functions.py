@@ -1,5 +1,7 @@
 ### HELPER FUNCTIONS
 
+#### Rows and columns might be reverse - back to the original concept of [rows][columns] instead of [columns][rows].
+
 ## Dimensions
 
 def dim(S):

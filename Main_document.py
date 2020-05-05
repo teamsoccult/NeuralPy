@@ -172,6 +172,8 @@ M.transpose(list_matrix)
 
 ### I):
 
+M.dim(list_matrix)
+
 #also assert that both should be of equal length
 def mean_square_error(U, V):
     if not isinstance(U, list) or not isinstance(V, list):
@@ -214,17 +216,19 @@ test = linear_load('mnist_linear.weights')
 images = read_image('train-images.idx3-ubyte')
 image_vector = image_to_vector(images[0])
 
-S = [1,2]
-M.dim([[1,2],[1,2]])
-len(S)
 def predict(network, image):
     A, b = network
     xA = M.multiply(image, A)
-    return M.add(xA, b)
+    xAb = M.add(xA, b)
+    return xAb
 
 predict(test, image_vector)
 dim(image_vector)
-dim(test)
+M.dim(test)
+
+M.dim(images[0])
+
+M.dim()
 
 predict(test, image_vector)
 '''
