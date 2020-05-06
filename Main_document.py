@@ -217,8 +217,6 @@ images = read_image('train-images.idx3-ubyte')
 labels = read_labels('train-labels.idx1-ubyte')
 image_vector = image_to_vector(images[0])
 
-import matrix_functions2 as M
-
 def predict(network, image):
     A, b = network
     xA = M.multiply(image, A)
@@ -227,35 +225,3 @@ def predict(network, image):
 
 predict(test, image_vector)
 
-### M)
-'''
-Create a function evaluate(network, images, labels) that given 
-a list of image vectors and corresponding labels, 
-returns the tuple (predictions, cost, accuracy), 
-where predictions is a list of the predicted labels 
-for the images, cost is the average of mean square errors 
-over all input-output pairs, and accuracy the fraction of 
-inputs where the predicted labels are correct. 
-Apply this to the loaded network and the 10.000 test images
- in t10k-images. 
- The accuracy should be around 92%, whereas the cost should be 222 
- (the cost is very bad since the network was trained to 
- optimze the cost measure softmax).
-
-Hint. Use your argmax function to convert network output into a label prediction.
-'''
-
-def evaluate(network,images,labels):
-    cost = 0
-    accuracy = 0
-    predictions = []
-    for i in range(len(images)):
-        prediction = predict(network, images[i])
-        predicted_label = argmax(prediction)
-        cost += mean_square_error(prediction, categorical(labels[i]))
-        if predicted_label == labels[i]:
-            accuracy +=1
-        predictions.append(predicted_label)
-    return (predictions, cost/len(images), accuracy/len(images))
-
-evaluate(test, image_vectors, labels)
