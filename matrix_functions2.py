@@ -74,7 +74,7 @@ def multiply(S, O):
 
     for m in range(self_rows):
         B_cols = gen_col(O)
-        for i in range(self_rows):
+        for i in range(other_columns):
             for j in range(self_columns):
                 sum_of_matrices +=  S[m][j] * next(B_cols)
             C[m].append(sum_of_matrices)
@@ -121,4 +121,3 @@ def transpose(S):
 
 # transpose(list_matrix)
 # transpose(list_matrix2)
-

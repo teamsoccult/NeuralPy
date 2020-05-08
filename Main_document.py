@@ -131,48 +131,7 @@ def image_to_vector(image): #inspired by https://stackoverflow.com/questions/952
 
 ## https://stackoverflow.com/questions/17531796/find-the-dimensions-of-a-multidimensional-python-array ##
 
-import matrix_functions as M
-
-M.dim([[1,2,3],[2,1,2]])
-M.dim([1,2,3])
-### TESTING THE MATRIX:
-
-## test dim_decorator
-
-M.dim([1,2,3,4])
-
-##INITIALIZING:
-list_matrix = [[1,2,3],[2,3,4],[2,3,5]]
-list_matrix2 = [[4,3,2],[5,3,2],[1,2,4]]
-
-M.dim(list_matrix)
-
-list_matrix3 = [[1,1,1,1], [2,2,2,2], [3,3,3,3]]
-list_matrix4 = [[4,4,4,4], [5,5,5,5], [6,6,6,6]]
-
-M.add(list_matrix3, list_matrix4)
-
-### INSTANCES OF MATRIX:
-
-### adding:
-M.add(list_matrix, list_matrix2)
-
-### subtracting:
-M.sub(list_matrix4, list_matrix3)
-
-### scalar multiplication:
-M.scalar_multiplication(list_matrix3, 4)
-
-### matrix mult:
-M.multiply(list_matrix, list_matrix2)
-
-### transpose
-M.transpose(list_matrix4)
-M.transpose(list_matrix)
-
-### I):
-
-M.dim(list_matrix)
+import matrix_functions2 as M
 
 #also assert that both should be of equal length
 def mean_square_error(U, V):
@@ -221,8 +180,23 @@ import matrix_functions2 as M
 
 def predict(network, image):
     A, b = network
+    image = [image]
+    print(f'image = {M.dim(image)}')
+    print(f'A = {M.dim(A)}')
     xA = M.multiply(image, A)
+    print(f'xA = {xA}')
+    dim_xA_rows, dim_xA_cols = M.dim(xA)
+    dim_b_rows, dim_b_cols = M.dim(b)
+    print(f'dim_xa_row = {dim_xA_rows}')
+    print(f'dim_xa_cols = {dim_xA_cols}')
+    print(f'dim_b_rows = {dim_b_rows}')
+    print(f'dim_b_cols = {dim_b_cols}')
+    print(f'{b}')
+    print(f'{xA}')
+    b = [b]
     xAb = M.add(xA, b)
     return xAb
 
-predict(test, image_vector)
+predicted_net = predict(test, image_vector)
+argmax(predicted_net)
+predicted_net
