@@ -193,3 +193,12 @@ predicted_net = predict(test, image_vector)
 predicted_net
 argmax(predicted_net)
 mean_square_error(predicted_net, categorical(5))
+
+### M)
+images = read_image('train-images.idx3-ubyte')
+labels = read_labels('train-labels.idx1-ubyte')
+
+def evaluate(network, images, labels):
+    for in in
+
+images[0]
