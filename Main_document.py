@@ -23,13 +23,11 @@ def read_labels(filename):
         return list(labels)
 
 labels = read_labels(filename['images'])
-
 labels
 
 ### TASK C)
 
 filename = {'images' : 't10k-images.idx3-ubyte' ,'labels' : 'train-images.idx3-ubyte'}
-
 
 def read_image(filename):
     '''Using the struct.unpack function, this function reads the image data
@@ -59,34 +57,30 @@ def read_image(filename):
 images = read_image(filename['images'])
 
 ### IMPORT MATPLOTLIB.PYPLOT AS PLT:
+labels[0]
 
-import matplotlib.pyplot as plt
+### D): (variables we need)
+index_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+filename = {'images' : 't10k-images.idx3-ubyte' ,'labels' : 'train-images.idx3-ubyte'}
+images = read_image(filename['images'])
+filename = {'images' : 't10k-labels.idx1-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
+labels = read_labels(filename['images'])
 
-### D):
-
-### DIFFERENT APPROACH: (INDEXES)
-# should probably be done using map instead (cater it to 1 picture instead)
-
-def plot_images(images, labels, indexes = [0]):
-    fig, axs = plt.subplots(1, len(indexes))
-    for i in range(len(indexes)):
-        axs[i].imshow(images[indexes[i]], cmap = "binary")
-        axs[i].axis("off")
-        axs[i].set_title(labels[indexes[i]])
+#assumes input is divisor of 5.
+def plot_images_new(images, labels, index_list):
+    columns = len(index_list) // 5
+    fig, axs = plt.subplots(columns, 5)
+    for i in range(columns):
+        for j in range(5):
+            axs[i,j].imshow(images[index_list[i+j]], cmap = "binary")
+            axs[i,j].axes.xaxis.set_visible(False)
+            axs[i,j].axes.yaxis.set_visible(False)
+            axs[i,j].set_title(labels[index_list[i+j]])
     plt.show()
 
-plot_images(images, labels, [0, 4, 5, 6, 8])
-
-#def plot_image(image, label):
-   # plt.imshow(image, cmap = "binary")
-    #plt.axis("off")
-    #plt.title(label)
-    #return plt.show()
-
-#map(plot_image, (images[1:2], labels[1:2]))
+plot_images_new(images, labels, index_list)
 
 ### F):
-
 import json
 import os
 
@@ -205,6 +199,76 @@ def evaluate(network, images, labels):
         predictions.append(prediction_label)
     return (predictions, cost/len(images), accuracy/len(images))
 
+
+### N)
+index_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+predictions = [7, 2, 1, 3, 4, 5, 6, 6, 8, 9, 10, 11]
+filename = {'images' : 't10k-images.idx3-ubyte' ,'labels' : 'train-images.idx3-ubyte'}
+images = read_image(filename['images'])
+filename = {'images' : 't10k-labels.idx1-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
+labels = read_labels(filename['images'])
+predictions = [7, 2, 1, 3, 4, 5, 6, 6, 8, 9, 10, 11]
+
+## consider doing **kwargs instead ##
+
+def plot_images_new(images, labels, index_list, predictions = labels):
+    columns = len(index_list) // 5
+    fig, axs = plt.subplots(columns, 5)
+    for i in range(columns):
+        for j in range(5):
+            axs[i,j].imshow(images[index_list[i+j]], cmap = "binary")
+            axs[i,j].axes.xaxis.set_visible(False)
+            axs[i,j].axes.yaxis.set_visible(False)
+            if labels[i+j] == predictions[i+j]:
+                axs[i,j].set_title(predictions[index_list[i+j]])
+            else:
+                axs[i,j].imshow(images[index_list[i+j]], cmap = "Reds")
+                axs[i,j].set_title(f'{predictions[index_list[i+j]]}, correct {labels[index_list[i+j]]}', color = 'red')
+    fig.tight_layout(pad=2.0)
+    plt.show()
+
+plot_images_new(images, labels, index_list, predictions)
+
+## O)
+
+#Right now we assume input of 10 weights.
+#Could be made more flexible.
+
+network = linear_load('mnist_linear.weights')
+A, b = network
+
+#assumes
+def weights_plot(A):
+    #prep.
+    cols_A = M.gen_col(A)
+    rows, columns = M.dim(A)
+
+    # creating K which holds lists of 28x28.
+    K = [[] for i in range(10)]
+    for i in range(columns):
+        C = [[] for i in range(28)]
+        for j in range(28):
+            for k in range(28):
+                C[j].append(next(cols_A))
+        K[i].append(C)
+
+    K = [y for x in K for y in x] #flatten the list.
+
+    #needed for the plot:
+    col_plt = 5
+    row_plt = 2
+    fig, axs = plt.subplots(2, 5)
+
+    #plotting
+    for i in range(row_plt):
+        for j in range(col_plt):
+            axs[i,j].imshow(K[(i*col_plt)+j], cmap = "gist_heat")
+            axs[i,j].axes.xaxis.set_visible(False)
+            axs[i,j].axes.yaxis.set_visible(False)
+            axs[i,j].set_title((i*col_plt)+j)
+    plt.show()
+
+
 ### P)
 
 '''
@@ -282,8 +346,4 @@ test_index = [image_to_vector(x) for x in images[0:10]]
 
 testing = create_batches(test_index, 3)
 
-
-
-x = testing[0][1]
-a = 
-
+## ok
