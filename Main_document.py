@@ -342,11 +342,18 @@ network = linear_load('mnist_linear.weights')
 
 batches = create_batches(list(range(len(images))), 10)
 
-batches_img = create_batches(images, 15)
+batches_img = create_batches(images, 50)
 
-image_batch = [[images[i]] for i in batches[0]]
-label_batch = [labels[i] for i in batches[0]]
+M.dim(batches_img)
 
+image_batch = [images[j] for i in batches for j in i]
+
+image_batch
+
+
+#label_batch = [labels[i] for i in batches[0]]
+
+M.dim(image_batch)
 
 def update(network, images, labels):
     batches = create_batches(list(range(len(images))), 10)
