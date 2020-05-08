@@ -68,14 +68,15 @@ labels = read_labels(filename['images'])
 
 #assumes input is divisor of 5.
 def plot_images_new(images, labels, index_list):
-    columns = len(index_list) // 5
-    fig, axs = plt.subplots(columns, 5)
-    for i in range(columns):
-        for j in range(5):
-            axs[i,j].imshow(images[index_list[i+j]], cmap = "binary")
+    rows = len(index_list) // 5
+    columns = 5
+    fig, axs = plt.subplots(rows, columns)
+    for i in range(rows):
+        for j in range(columns):
+            axs[i,j].imshow(images[index_list[(i*columns)+j]], cmap = "binary")
             axs[i,j].axes.xaxis.set_visible(False)
             axs[i,j].axes.yaxis.set_visible(False)
-            axs[i,j].set_title(labels[index_list[i+j]])
+            axs[i,j].set_title(labels[index_list[(i*columns)+j]])
     plt.show()
 
 plot_images_new(images, labels, index_list)
@@ -212,18 +213,19 @@ predictions = [7, 2, 1, 3, 4, 5, 6, 6, 8, 9, 10, 11]
 ## consider doing **kwargs instead ##
 
 def plot_images_new(images, labels, index_list, predictions = labels):
-    columns = len(index_list) // 5
-    fig, axs = plt.subplots(columns, 5)
-    for i in range(columns):
-        for j in range(5):
-            axs[i,j].imshow(images[index_list[i+j]], cmap = "binary")
+    rows = len(index_list) // 5
+    columns = 5
+    fig, axs = plt.subplots(rows, columns)
+    for i in range(rows):
+        for j in range(columns):
+            axs[i,j].imshow(images[index_list[(i*columns)+j]], cmap = "binary")
             axs[i,j].axes.xaxis.set_visible(False)
             axs[i,j].axes.yaxis.set_visible(False)
             if labels[i+j] == predictions[i+j]:
-                axs[i,j].set_title(predictions[index_list[i+j]])
+                axs[i,j].set_title(predictions[index_list[(i*columns)+j]])
             else:
                 axs[i,j].imshow(images[index_list[i+j]], cmap = "Reds")
-                axs[i,j].set_title(f'{predictions[index_list[i+j]]}, correct {labels[index_list[i+j]]}', color = 'red')
+                axs[i,j].set_title(f'{predictions[index_list[(i*columns)+j]]}, correct {labels[index_list[i+j]]}', color = 'red')
     fig.tight_layout(pad=2.0)
     plt.show()
 
@@ -268,15 +270,15 @@ def weights_plot(A):
             axs[i,j].set_title((i*col_plt)+j)
     plt.show()
 
-
+weights_plot(A)
 ### P)
 
 '''
-Create function create_batches(values, batch_size) 
-that partitions a list of values into batches of 
-size batch_size, except for the last batch, that can be smaller. 
+Create function create_batches(values, batch_size)
+that partitions a list of values into batches of
+size batch_size, except for the last batch, that can be smaller.
 The list should be permuted before being cut into batches.
-Example: create_batches(list(range(7)), 3) 
+Example: create_batches(list(range(7)), 3)
 should return [[3, 0, 1], [2, 5, 4], [6]].
 '''
 
@@ -286,7 +288,7 @@ def create_batches(values, batch_size):
     '''Using the random.shuffle function from the random module,
     this function partitions a list of values into random batches of
     length batch_size. The only exception is the last batch, which can be
-    of a smaller length. 
+    of a smaller length.
     Assumes that the input is a list and that batch_size is an integer.
     Returns a list of batches of values.
     '''
@@ -321,25 +323,25 @@ indices, l
 
 ### Q)
 '''
-Create a function update(network, images, labels) 
-that updates the network network = (A, b) 
-given a batch of n image vectors and corresponding 
+Create a function update(network, images, labels)
+that updates the network network = (A, b)
+given a batch of n image vectors and corresponding
 output labels (performs one step of a stochastical gradient
-descend in the 784 * 10 + 10 = 7850 dimensional space 
+descend in the 784 * 10 + 10 = 7850 dimensional space
 where all entries of A and b are considered to be variables).
-For each input in the batch, we consider the tuple (x, a, y), 
+For each input in the batch, we consider the tuple (x, a, y),
 where x is the image vector, a = xA + b the current network's
 output on input x, and y the corresponding categorical vector
-for the label. The biases b and weights A are updated as 
+for the label. The biases b and weights A are updated as
 follows:
 b j −= σ · (1 / n) · ∑ (x,a,y) 2 · ( a j − y j) / 10
 A ij −= σ · (1 / n) · ∑ (x,a,y) x i · 2 · ( a j − y j) / 10
-For this problem an appropriate value for the step size σ 
+For this problem an appropriate value for the step size σ
 of the gradient descend is σ = 0.1.
-In the above equations 2 · (aj −yj) / 10 
+In the above equations 2 · (aj −yj) / 10
 is the derivative of the cost function (mean squared error)
 wrt. to the output aj, whereas xi · 2 · (aj − yj) / 10
-is the derivative of the cost function w.r.t. to Aij — both 
+is the derivative of the cost function w.r.t. to Aij — both
 for a specific image (x, a, y).
 '''
 test_index = [image_to_vector(x) for x in images[0:10]]
