@@ -224,4 +224,3 @@ def predict(network, image):
     return xAb
 
 predict(test, image_vector)
-
