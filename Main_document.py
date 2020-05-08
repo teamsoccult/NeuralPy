@@ -329,9 +329,6 @@ wrt. to the output aj, whereas xi · 2 · (aj − yj) / 10
 is the derivative of the cost function w.r.t. to Aij — both
 for a specific image (x, a, y).
 '''
-test_index = [image_to_vector(x) for x in images[0:10]]
-
-testing = create_batches(test_index, 3)
 
 filename_test = {'images' : 't10k-images.idx3-ubyte' ,'labels' : 't10k-labels.idx1-ubyte'}
 filename_train = {'images' : 'train-images.idx3-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
@@ -340,20 +337,16 @@ labels = read_labels(filename_train['labels'])
 images = read_image(filename_train['images'])
 network = linear_load('mnist_linear.weights')
 
+#something something batches, make cleaner.
+#also consider what we actually need.
 batches = create_batches(list(range(len(images))), 10)
-
-batches_img = create_batches(images, 50)
-
-M.dim(batches_img)
-
-image_batch = [images[j] for i in batches for j in i]
-
-image_batch
-
-
-#label_batch = [labels[i] for i in batches[0]]
-
-M.dim(image_batch)
+image_batch = []
+label_batch = []
+for i in batches:
+    one_img_batch = [images[j] for j in i]
+    image_batch.append(one_img_batch)
+    one_lab_batch = [labels[j] for j in i]
+    label_batch.append(one_lab_batch)
 
 def update(network, images, labels):
     batches = create_batches(list(range(len(images))), 10)
