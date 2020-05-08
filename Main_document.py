@@ -189,16 +189,101 @@ def predict(network, image):
     xAb_unlisted = xAb[0]
     return xAb_unlisted
 
-predicted_net = predict(test, image_vector)
-predicted_net
-argmax(predicted_net)
-mean_square_error(predicted_net, categorical(5))
-
 ### M)
-images = read_image('train-images.idx3-ubyte')
-labels = read_labels('train-labels.idx1-ubyte')
 
 def evaluate(network, images, labels):
-    for in in
+    predictions = []
+    cost = 0
+    accuracy = 0
+    for i in range(len(images)):
+        image_vector = image_to_vector(images[i])
+        prediction = predict(network, image_vector)
+        prediction_label = argmax(prediction)
+        cost += mean_square_error(prediction, categorical(labels[i]))
+        if prediction_label == labels[i]:
+            accuracy += 1
+        predictions.append(prediction_label)
+    return (predictions, cost/len(images), accuracy/len(images))
 
-images[0]
+### P)
+
+'''
+Create function create_batches(values, batch_size) 
+that partitions a list of values into batches of 
+size batch_size, except for the last batch, that can be smaller. 
+The list should be permuted before being cut into batches.
+Example: create_batches(list(range(7)), 3) 
+should return [[3, 0, 1], [2, 5, 4], [6]].
+'''
+
+import random
+
+def create_batches(values, batch_size):
+    '''Using the random.shuffle function from the random module,
+    this function partitions a list of values into random batches of
+    length batch_size. The only exception is the last batch, which can be
+    of a smaller length. 
+    Assumes that the input is a list and that batch_size is an integer.
+    Returns a list of batches of values.
+    '''
+    values_list = []
+    index_list = []
+    values_copy = list(enumerate(values[:]))
+    random.shuffle(values_copy)
+    current_batch = 0
+    indexes, values = zip(*return_list)
+
+    while current_batch < len(values_copy):
+        current_batch += batch_size
+        values_list.append(values[current_batch-batch_size:current_batch])
+
+    return (indexes, values)
+
+indices, l = create_batches(list(range(8)), 3)
+
+list(indices)
+
+l
+
+indices, l
+
+l = [4, 8, 15, 16, 23, 42]
+x = list(enumerate(l))
+random.shuffle(x)
+indices, l = zip(*x)
+
+indices, l
+
+
+### Q)
+'''
+Create a function update(network, images, labels) 
+that updates the network network = (A, b) 
+given a batch of n image vectors and corresponding 
+output labels (performs one step of a stochastical gradient
+descend in the 784 * 10 + 10 = 7850 dimensional space 
+where all entries of A and b are considered to be variables).
+For each input in the batch, we consider the tuple (x, a, y), 
+where x is the image vector, a = xA + b the current network's
+output on input x, and y the corresponding categorical vector
+for the label. The biases b and weights A are updated as 
+follows:
+b j −= σ · (1 / n) · ∑ (x,a,y) 2 · ( a j − y j) / 10
+A ij −= σ · (1 / n) · ∑ (x,a,y) x i · 2 · ( a j − y j) / 10
+For this problem an appropriate value for the step size σ 
+of the gradient descend is σ = 0.1.
+In the above equations 2 · (aj −yj) / 10 
+is the derivative of the cost function (mean squared error)
+wrt. to the output aj, whereas xi · 2 · (aj − yj) / 10
+is the derivative of the cost function w.r.t. to Aij — both 
+for a specific image (x, a, y).
+'''
+test_index = [image_to_vector(x) for x in images[0:10]]
+
+testing = create_batches(test_index, 3)
+
+
+
+x = testing[0][1]
+a = 
+
