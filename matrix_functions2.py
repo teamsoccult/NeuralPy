@@ -90,35 +90,35 @@ def transpose(S):
             C[j].append(next(A))
     return(C)
 
-### Test:
+# ### Test:
 
-list_matrix = [[1,2,3], [4,5,6]]
-list_matrix2 = [[2,3],[4,5], [6,7]]
-list_matrix3 = [[2,3,4], [5, 6,7]]
+# list_matrix = [[1,2,3], [4,5,6]]
+# list_matrix2 = [[2,3],[4,5], [6,7]]
+# list_matrix3 = [[2,3,4], [5, 6,7]]
 
-### Dim:
+# ### Dim:
 
-dim(list_matrix)
-dim(list_matrix2)
-dim([1,2,3])
+# dim(list_matrix)
+# dim(list_matrix2)
+# dim([1,2,3])
 
-### Add and sub:
-add(list_matrix, list_matrix3)
-sub(list_matrix3, list_matrix)
+# ### Add and sub:
+# add(list_matrix, list_matrix3)
+# sub(list_matrix3, list_matrix)
 
-###Scalar Multiplication
-scalar_multiplication(list_matrix, 5)
+# ###Scalar Multiplication
+# scalar_multiplication(list_matrix, 5)
 
-### Matrix multiplication:
+# ### Matrix multiplication:
 
-multiply(list_matrix, list_matrix2)
+# multiply(list_matrix, list_matrix2)
 
-multiply(list_matrix2, list_matrix)
+# multiply(list_matrix2, list_matrix)
 
-multiply(list_matrix3, list_matrix)
+# multiply(list_matrix3, list_matrix)
 
-### Transpose:
+# ### Transpose:
 
-transpose(list_matrix)
-transpose(list_matrix2)
+# transpose(list_matrix)
+# transpose(list_matrix2)
 
