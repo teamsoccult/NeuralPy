@@ -180,23 +180,16 @@ import matrix_functions2 as M
 
 def predict(network, image):
     A, b = network
-    image = [image]
-    print(f'image = {M.dim(image)}')
-    print(f'A = {M.dim(A)}')
+    image = [image] #manual for now
     xA = M.multiply(image, A)
-    print(f'xA = {xA}')
     dim_xA_rows, dim_xA_cols = M.dim(xA)
     dim_b_rows, dim_b_cols = M.dim(b)
-    print(f'dim_xa_row = {dim_xA_rows}')
-    print(f'dim_xa_cols = {dim_xA_cols}')
-    print(f'dim_b_rows = {dim_b_rows}')
-    print(f'dim_b_cols = {dim_b_cols}')
-    print(f'{b}')
-    print(f'{xA}')
-    b = [b]
+    b = [b] #manual for now.
     xAb = M.add(xA, b)
-    return xAb
+    xAb_unlisted = xAb[0]
+    return xAb_unlisted
 
 predicted_net = predict(test, image_vector)
-argmax(predicted_net)
 predicted_net
+argmax(predicted_net)
+mean_square_error(predicted_net, categorical(5))
