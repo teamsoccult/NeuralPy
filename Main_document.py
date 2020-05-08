@@ -1,4 +1,5 @@
 import struct as st
+import matplotlib.pyplot as plt
 
 ### TASK B)
 ### TSK B)
@@ -293,33 +294,17 @@ def create_batches(values, batch_size):
     Returns a list of batches of values.
     '''
     values_list = []
-    index_list = []
-    values_copy = list(enumerate(values[:]))
+    values_copy = values[:]
     random.shuffle(values_copy)
     current_batch = 0
-    indexes, values = zip(*return_list)
 
     while current_batch < len(values_copy):
         current_batch += batch_size
-        values_list.append(values[current_batch-batch_size:current_batch])
+        values_list.append(values_copy[current_batch-batch_size:current_batch])
 
-    return (indexes, values)
+    return values_list
 
-indices, l = create_batches(list(range(8)), 3)
-
-list(indices)
-
-l
-
-indices, l
-
-l = [4, 8, 15, 16, 23, 42]
-x = list(enumerate(l))
-random.shuffle(x)
-indices, l = zip(*x)
-
-indices, l
-
+l = create_batches(list(range(8)), 3)
 
 ### Q)
 '''
@@ -347,5 +332,25 @@ for a specific image (x, a, y).
 test_index = [image_to_vector(x) for x in images[0:10]]
 
 testing = create_batches(test_index, 3)
+
+filename_test = {'images' : 't10k-images.idx3-ubyte' ,'labels' : 't10k-labels.idx1-ubyte'}
+filename_train = {'images' : 'train-images.idx3-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
+
+labels = read_labels(filename_train['labels'])
+images = read_image(filename_train['images'])
+network = linear_load('mnist_linear.weights')
+
+batches = create_batches(list(range(len(images))), 10)
+
+batches_img = create_batches(images, 15)
+
+image_batch = [[images[i]] for i in batches[0]]
+label_batch = [labels[i] for i in batches[0]]
+
+
+def update(network, images, labels):
+    batches = create_batches(list(range(len(images))), 10)
+
+
 
 ## ok
