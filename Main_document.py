@@ -217,6 +217,8 @@ images = read_image('train-images.idx3-ubyte')
 labels = read_labels('train-labels.idx1-ubyte')
 image_vector = image_to_vector(images[0])
 
+import matrix_functions2 as M
+
 def predict(network, image):
     A, b = network
     xA = M.multiply(image, A)
