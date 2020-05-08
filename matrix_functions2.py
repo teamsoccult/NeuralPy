@@ -16,12 +16,12 @@ def dim_recursive(S):
     return [len(S)] + dim_recursive(S[0])
 
 ## Generators
-def gen_col(S):
+def gen_row(S):
     for i in S:
         for j in i:
             yield j
 
-def gen_row(S):
+def gen_col(S):
     for i in range(len(S[0])):
         for j in S:
             yield j[i]
@@ -30,39 +30,39 @@ def gen_row(S):
 def add(S, O):
     if dim(S) != dim(O):
         raise ValueError("The two matrices do not have the same dimensions.")
-    columns, rows = dim(S)
-    A = gen_col(S)
-    B = gen_col(O)
-    C = [[] for i in range(columns)]
-    for i in range(columns):
-        for j in range(rows):
+    rows, columns = dim(S)
+    A = gen_row(S)
+    B = gen_row(O)
+    C = [[] for i in range(rows)]
+    for i in range(rows):
+        for j in range(columns):
             C[i].append(next(A) + next(B))
     return C
 
 def sub(S, O):
     if dim(S) != dim(O):
         raise ValueError("The two matrices do not have the same dimensions.")
-    columns, rows = dim(S)
-    A = gen_col(S)
-    B = gen_col(O)
-    C = [[] for i in range(columns)]
-    for i in range(columns):
-        for j in range(rows):
+    rows, columns = dim(S)
+    A = gen_row(S)
+    B = gen_row(O)
+    C = [[] for i in range(rows)]
+    for i in range(rows):
+        for j in range(columns):
             C[i].append(next(A) - next(B))
     return C
 
 def scalar_multiplication(S, scalar):
-    generator_self = gen_col(S)
-    columns, rows = dim(S)
-    C = [[] for i in range(columns)]
-    for i in range(columns):
-        for j in range(rows):
+    generator_self = gen_row(S)
+    rows, columns = dim(S)
+    C = [[] for i in range(rows)]
+    for i in range(rows):
+        for j in range(columns):
             C[i].append(next(generator_self)*scalar)
     return C
 
 def multiply(S, O):
-    self_columns, self_rows = dim(S)
-    other_columns, other_rows = dim(O)
+    self_rows, self_columns = dim(S)
+    other_rows, other_columns = dim(O)
 
     if self_columns != other_rows:
         raise ValueError('''The two matrices do not match for matrix multiplication.
@@ -72,20 +72,53 @@ def multiply(S, O):
 
     sum_of_matrices = 0
 
-    for m in range(other_columns):
+    for m in range(self_rows):
         B_cols = gen_col(O)
         for i in range(self_rows):
-            for j in range(other_rows):
-                sum_of_matrices +=  S[j][m] * next(B_cols)
-            C[i].append(sum_of_matrices)
+            for j in range(self_columns):
+                sum_of_matrices +=  S[m][j] * next(B_cols)
+            C[m].append(sum_of_matrices)
             sum_of_matrices = 0
     return C
 
 def transpose(S):
-    A = gen_col(S)
-    columns, rows = dim(S) # maybe smart.
-    C = [[] for i in range(rows)] # empty list
-    for i in range(columns): #will have the opposite dimensionality.
-        for j in range(rows):
+    A = gen_row(S)
+    rows, columns = dim(S) # maybe smart.
+    C = [[] for i in range(columns)] # empty list
+    for i in range(rows): #will have the opposite dimensionality.
+        for j in range(columns):
             C[j].append(next(A))
     return(C)
+
+### Test:
+
+list_matrix = [[1,2,3], [4,5,6]]
+list_matrix2 = [[2,3],[4,5], [6,7]]
+list_matrix3 = [[2,3,4], [5, 6,7]]
+
+### Dim:
+
+dim(list_matrix)
+dim(list_matrix2)
+dim([1,2,3])
+
+### Add and sub:
+add(list_matrix, list_matrix3)
+sub(list_matrix3, list_matrix)
+
+###Scalar Multiplication
+scalar_multiplication(list_matrix, 5)
+
+### Matrix multiplication:
+
+multiply(list_matrix, list_matrix2)
+
+multiply(list_matrix2, list_matrix)
+
+multiply(list_matrix3, list_matrix)
+
+### Transpose:
+
+transpose(list_matrix)
+transpose(list_matrix2)
+
