@@ -395,10 +395,6 @@ def update(network, images, labels, sigma = 0.1):
             for i in range(len(A)):
                 A_update = sigma *
 
-
-
-
-
 '''
 
 ## ok
