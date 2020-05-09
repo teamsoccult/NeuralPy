@@ -2,7 +2,6 @@ import struct as st
 import matplotlib.pyplot as plt
 
 ### TASK B)
-### TSK B)
 
 filename = {'images' : 't10k-labels.idx1-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
 
@@ -337,6 +336,7 @@ labels = read_labels(filename_train['labels'])
 images = read_image(filename_train['images'])
 network = linear_load('mnist_linear.weights')
 
+M.dim(network)
 #something something batches, make cleaner.
 #also consider what we actually need.
 batches = create_batches(list(range(len(images))), 10)
@@ -348,8 +348,34 @@ for i in batches:
     one_lab_batch = [labels[j] for j in i]
     label_batch.append(one_lab_batch)
 
+M.dim(image_batch)
+here = image_batch[0]
+image_batch_1 = image_batch[0]
+labels_batch_1 = label_batch[0]
+len(image_batch_1)
+
+n = len(image_batch_1)
 def update(network, images, labels):
-    batches = create_batches(list(range(len(images))), 10)
+    sigma = 0.1 #specified sigma value.
+    for i in range(len(images)):
+        x = image_to_vector(images[i])
+        a = predict(network, x)
+        y = categorical(labels[i])
+        A, b = network
+        summationForce = 0
+        for j in range(len(y)):
+            #2 * (a[j] - y[j]) / 10
+            #summationForce += 0
+        b -= sigma * (1/n) * summationForce
+    print(f'x = {x}')
+    print(f'a = {a}')
+    print(f'y = {y}')
+    print(f'x dim = {M.dim(x)}')
+    print(f'a dim = {M.dim(a)}')
+    print(f'y dim = {M.dim(y)}')
+
+update(network, image_batch_1, labels_batch_1)
+
 
 
 
