@@ -127,7 +127,7 @@ def image_to_vector(image): #inspired by https://stackoverflow.com/questions/952
 
 ## https://stackoverflow.com/questions/17531796/find-the-dimensions-of-a-multidimensional-python-array ##
 
-import matrix_functions2 as M
+import matrix_functions as M
 
 #also assert that both should be of equal length
 def mean_square_error(U, V):
@@ -304,6 +304,8 @@ def create_batches(values, batch_size):
 
     return values_list
 
+### testing batches:
+
 l = create_batches(list(range(8)), 3)
 
 ### Q)
@@ -348,8 +350,26 @@ for i in batches:
     one_lab_batch = [labels[j] for j in i]
     label_batch.append(one_lab_batch)
 
-def update(network, images, labels):
-    batches = create_batches(list(range(len(images))), 10)
+M.dim(image_batch)
+
+
+def update(network, images, labels, sigma = 0.1):
+    A_list = []
+    b_list = []
+    for n in range(len(images)):
+        x = image_to_vector(images[n])
+        a = predict(network, x)
+        y = categorial(labels[n])
+        A, b = network
+        for j in range(len(b)):
+            b_update = sigma * (1/n) * 2 * (a[j] - y[j]) / 10
+            b_list.append(b_update)
+            for i in range(len(A)):
+                A_update = sigma * 
+
+
+
+    
 
 
 
