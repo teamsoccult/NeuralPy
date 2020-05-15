@@ -65,8 +65,6 @@ filename = {'images' : 't10k-images.idx3-ubyte' ,'labels' : 'train-images.idx3-u
 images = read_image(filename['images'])
 filename = {'images' : 't10k-labels.idx1-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
 labels = read_labels(filename['images'])
-M.dim(images)
-M.dim(labels)
 #assumes input is divisor of 5.
 
 def plot_images(images, labels, index_list):
@@ -256,7 +254,7 @@ def predict(network, image):
     return xAb_unlisted
 
 #testing the function
-predict(network, image_vector)
+predict(network, image_vector) #what?
 
 #maybe doing some doctest?
 import doctest
