@@ -205,8 +205,6 @@ images = read_image('train-images.idx3-ubyte')
 labels = read_labels('train-labels.idx1-ubyte')
 image_vector = image_to_vector(images[0])
 
-import matrix_functions2 as M
-
 def predict(network, image):
     '''
     Description:
@@ -425,52 +423,27 @@ for i in batches:
     one_lab_batch = [labels[j] for j in i]
     label_batch.append(one_lab_batch)
 
-M.dim(image_batch)
-
-'''
-here = image_batch[0]
-image_batch_1 = image_batch[0]
-labels_batch_1 = label_batch[0]
-len(image_batch_1)
-
-n = len(image_batch_1)
-def update(network, images, labels):
-    sigma = 0.1 #specified sigma value.
-    for i in range(len(images)):
-        x = image_to_vector(images[i])
-        a = predict(network, x)
-        y = categorical(labels[i])
-        A, b = network
-        summationForce = 0
-        for j in range(len(y)):
-            #2 * (a[j] - y[j]) / 10
-            #summationForce += 0
-        b -= sigma * (1/n) * summationForce
-    print(f'x = {x}')
-    print(f'a = {a}')
-    print(f'y = {y}')
-    print(f'x dim = {M.dim(x)}')
-    print(f'a dim = {M.dim(a)}')
-    print(f'y dim = {M.dim(y)}')
-
-update(network, image_batch_1, labels_batch_1)
-
-
-
-def update(network, images, labels, sigma = 0.1):
+def update(network, image_batch, label_batch, sigma = 0.1):
     A_list = []
     b_list = []
-    for n in range(len(images)):
-        x = image_to_vector(images[n])
-        a = predict(network, x)
-        y = categorial(labels[n])
-        A, b = network
-        for j in range(len(b)):
-            b_update = sigma * (1/n) * 2 * (a[j] - y[j]) / 10
-            b_list.append(b_update)
-            for i in range(len(A)):
-                A_update = sigma *
+    for m in range(len(image_batch)): #6,000.
+        for n in range(len(image_batch[1])): #10.
+            x = image_to_vector(image_batch[m][n]) #m, n.
+            a = predict(network, x)
+            y = categorial(label_batch[n])
+            A, b = network
 
-'''
 
-## ok
+            for j in range(len(y)):
+                j_sum = 2 * (a[j] - y[j]) / 10
+                print(f"j sum = {j_sum}")
+                B_list[j] += j_sum
+                print(f"b list = {B_list}")
+
+    for k in range(len(y)):
+        print(f"n = {n}")
+        b[j] -= sigma * (1/n) * b_list[j]
+        print(f"b = {b}")
+
+
+update(network, image_batch, label_batch)
