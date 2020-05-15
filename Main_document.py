@@ -404,46 +404,43 @@ is the derivative of the cost function w.r.t. to Aij — both
 for a specific image (x, a, y).
 '''
 
+
+
+### R
+''' Create a function learn(images, labels, epochs, batch_size)
+to train an initially random network on a set of image vectors
+and labels. First initialize the network to contain random weights:
+each value of b to be a uniform random value in [0, 1], and each
+value in A to be a uniform random value in [0, 1 / 784]. Then
+perform epochs epochs, each epoch consiting of partitioning the
+input into batches of batch_size images, and calling update with
+each of the batches. Try running your learning function with epochs=5
+and batch_size=100 on the MNIST training set train-images and train-labels.
+Hint. The above computation can take a long time, so print regularly
+a status of the current progress of the network learning, e.g. by
+evaluating the network on (a subset of) the test images t10k-images.
+Regularly save the best network seen so far. '''
+
+import random
+
+def learn(images, labels, epochs, batch_size):
+    #initializing the random network:
+    b = [random.uniform(0, 1) for m in range(10)]
+    A = [[random.uniform(0, 1/784) for n in range(784)] for n in range(10)]
+    network = [A, b]
+
+    for e in range(epochs):
+        batches = create_batches(list(range(len(images))), batch_size)
+        for i in batches: #this should be smarter..
+            one_img_batch = [images[j] for j in i]
+            one_lab_batch = [labels[j] for j in i]
+            #update(network, one_img_batch, one_lab_batch, sigma = 0.1)
+
 filename_test = {'images' : 't10k-images.idx3-ubyte' ,'labels' : 't10k-labels.idx1-ubyte'}
 filename_train = {'images' : 'train-images.idx3-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
 
 labels = read_labels(filename_train['labels'])
 images = read_image(filename_train['images'])
 network = linear_load('mnist_linear.weights')
-
-M.dim(network)
-#something something batches, make cleaner.
-#also consider what we actually need.
-batches = create_batches(list(range(len(images))), 10)
-image_batch = []
-label_batch = []
-for i in batches:
-    one_img_batch = [images[j] for j in i]
-    image_batch.append(one_img_batch)
-    one_lab_batch = [labels[j] for j in i]
-    label_batch.append(one_lab_batch)
-
-def update(network, image_batch, label_batch, sigma = 0.1):
-    A_list = []
-    b_list = []
-    for m in range(len(image_batch)): #6,000.
-        for n in range(len(image_batch[1])): #10.
-            x = image_to_vector(image_batch[m][n]) #m, n.
-            a = predict(network, x)
-            y = categorial(label_batch[n])
-            A, b = network
-
-
-            for j in range(len(y)):
-                j_sum = 2 * (a[j] - y[j]) / 10
-                print(f"j sum = {j_sum}")
-                B_list[j] += j_sum
-                print(f"b list = {B_list}")
-
-    for k in range(len(y)):
-        print(f"n = {n}")
-        b[j] -= sigma * (1/n) * b_list[j]
-        print(f"b = {b}")
-
-
-update(network, image_batch, label_batch)
+epochs = 2
+learn(images, labels, epochs, 10)
