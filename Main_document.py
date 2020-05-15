@@ -469,15 +469,30 @@ import random
 def learn(images, labels, epochs, batch_size):
     #initializing the random network:
     b = [random.uniform(0, 1) for m in range(10)]
-    A = [[random.uniform(0, 1/784) for n in range(784)] for n in range(10)]
+    A = [[random.uniform(0, 1/784) for n in range(10)] for n in range(784)]
+    print(f"b dim {M.dim(b)}")
+    print(f"A dim {M.dim(A)}")
     network = [A, b]
+    print(f"network dim {M.dim(network)}")
 
     for e in range(epochs):
         batches = create_batches(list(range(len(images))), batch_size)
         for i in batches: #this should be smarter..
             one_img_batch = [images[j] for j in i]
             one_lab_batch = [labels[j] for j in i]
-            #update(network, one_img_batch, one_lab_batch, sigma = 0.1)
+            print(f"one img batch {M.dim(one_img_batch)}")
+            print(f"one lab batch {M.dim(one_lab_batch)}")
+            network = update(network, one_img_batch, one_lab_batch, sigma = 0.1)
+            pred, cost, acc = evaluate(network, images, labels)
+            print(f"cost {cost}")
+            print(f"acc {acc}")
 
 filename_test = {'images' : 't10k-images.idx3-ubyte' ,'labels' : 't10k-labels.idx1-ubyte'}
 filename_train = {'images' : 'train-images.idx3-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
+labels = read_labels(filename_train['labels'])
+images = read_image(filename_train['images'])
+network = linear_load('mnist_linear.weights')
+batch_size = 100
+epochs = 1
+
+learn(images, labels, epochs, batch_size)
