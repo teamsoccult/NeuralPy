@@ -57,17 +57,52 @@ def read_image(filename):
 images = read_image(filename['images'])
 
 ### IMPORT MATPLOTLIB.PYPLOT AS PLT:
-labels[0]
+import matplotlib.pyplot as plt
 
 ### D): (variables we need)
-index_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+index_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 filename = {'images' : 't10k-images.idx3-ubyte' ,'labels' : 'train-images.idx3-ubyte'}
 images = read_image(filename['images'])
 filename = {'images' : 't10k-labels.idx1-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
 labels = read_labels(filename['images'])
-
+M.dim(images)
+M.dim(labels)
 #assumes input is divisor of 5.
-def plot_images_new(images, labels, index_list):
+
+def plot_images(images, labels, index_list):
+
+    '''
+    Description:
+    Returns multiple sub-plots of images.
+
+    ________
+
+    Assumptions:
+    Assumes index_list has a length which returns an integer
+    when divided by 5 (e.g., has length 5, 10, 15, 20, etc.).
+
+    ________
+
+    Returns:
+    Using the subplots function from matplotlib.pyplot we always
+    plot 5 columns, and add additional rows depending on the
+    size of the input. The function uses imshow to display the
+    pixel values as an image. The colormap "binary" is used, which
+    is a black and white representation and makes for easy
+    deciphering of the digits. The title will be the label
+    associated with the particular image. For aesthetic purposes
+    we have removed the axis ticks and values, as these don't
+    actually correspond to anything meaningful in this case.
+
+    ________
+
+    Keyword arguments:
+    images -- list with any number of pixel images (usually 28x28).
+    labels -- list with any number of labels (e.g., '7') corresponding to images.
+    index_list -- list containing indexes of which images/labels to plot.
+
+    '''
+
     rows = len(index_list) // 5
     columns = 5
     fig, axs = plt.subplots(rows, columns)
@@ -79,7 +114,8 @@ def plot_images_new(images, labels, index_list):
             axs[i,j].set_title(labels[index_list[(i*columns)+j]])
     plt.show()
 
-plot_images_new(images, labels, index_list)
+plot_images(images, labels, index_list)
+help(plot_images)
 
 ### F):
 import json
@@ -166,7 +202,7 @@ def categorical(label, classes = 10):
 categorical(3) #checks out
 
 ### L)
-test = linear_load('mnist_linear.weights')
+network = linear_load('mnist_linear.weights')
 images = read_image('train-images.idx3-ubyte')
 labels = read_labels('train-labels.idx1-ubyte')
 image_vector = image_to_vector(images[0])
@@ -174,6 +210,41 @@ image_vector = image_to_vector(images[0])
 import matrix_functions2 as M
 
 def predict(network, image):
+    '''
+    Description:
+    Multiplies an image vector with the weights of a given network,
+    and adds this product with the bias of the network.
+    (is this correct?)
+    This corresponds to the networks prediction of what the image is.
+
+    ________
+
+    Assumptions:
+    Assumes that network is a nested list, with the sub-elements.
+    The first element (A) should have the same number of rows that
+    the image
+
+    ________
+
+    Returns:
+    Returns a list of length equal to b (bias vector).
+    say something more..
+
+    ________
+
+    Keyword arguments:
+    image -- image vector (list) with of size [1, x] where
+    x is the number of columns (so it is a row vector).
+    network -- list with size [2, y, z] where y is the number
+    of
+
+    ________
+
+    Examples:
+    >>> predict([[[2,3],[2,2],[1,2],[1,2]],[2,3]], [1,2,4,0])
+    [12, 18]
+
+    '''
     A, b = network
     image = [image] #manual for now
     xA = M.multiply(image, A)
@@ -184,6 +255,12 @@ def predict(network, image):
     xAb_unlisted = xAb[0]
     return xAb_unlisted
 
+#testing the function
+predict(network, image_vector)
+
+#maybe doing some doctest?
+import doctest
+doctest.testmod(verbose=True)
 ### M)
 
 def evaluate(network, images, labels):
