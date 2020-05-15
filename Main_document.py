@@ -351,6 +351,7 @@ for i in batches:
     label_batch.append(one_lab_batch)
 
 M.dim(image_batch)
+
 '''
 here = image_batch[0]
 image_batch_1 = image_batch[0]
