@@ -404,7 +404,50 @@ is the derivative of the cost function w.r.t. to Aij — both
 for a specific image (x, a, y).
 '''
 
+filename_test = {'images' : 't10k-images.idx3-ubyte' ,'labels' : 't10k-labels.idx1-ubyte'}
+filename_train = {'images' : 'train-images.idx3-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
+labels = read_labels(filename_train['labels'])
+images = read_image(filename_train['images'])
+network = linear_load('mnist_linear.weights')
 
+def update(network, images, labels, sigma = 0.1):
+    A, b = network
+    A_list = [[0]*len(network[1]) for i in range(len(A))]
+    b_list = [[0 for i in range(len(b))]]
+
+    for n in range(len(images)):
+        x = image_to_vector(images[n])
+        a = predict(network, x)
+        y = categorical(labels[n])
+
+        for j in range(len(b)):
+
+            current_element = 2 * (a[j] - y[j]) / 10
+
+            b_list[0][j] += current_element
+
+            for i in range(len(A)):
+                A_list[i][j] += x[i] * current_element
+
+    b_list_final = M.scalar_multiplication(b_list, (sigma * 1/len(images)))
+    b = M.sub([b], b_list_final)
+
+    A_list_final = M.scalar_multiplication(A_list, (sigma * 1/len(images)))
+    A = M.sub(A, A_list_final)
+
+    network = [A, b[0]]
+
+    return network
+
+updating_network = update(network, image_batch[0], label_batch[0])
+
+M.dim(updating_network)
+
+labels = read_labels(filename_train['labels'])
+images = read_image(filename_train['images'])
+network = linear_load('mnist_linear.weights')
+epochs = 2
+learn(images, labels, epochs, 10)
 
 ### R
 ''' Create a function learn(images, labels, epochs, batch_size)
@@ -438,9 +481,3 @@ def learn(images, labels, epochs, batch_size):
 
 filename_test = {'images' : 't10k-images.idx3-ubyte' ,'labels' : 't10k-labels.idx1-ubyte'}
 filename_train = {'images' : 'train-images.idx3-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
-
-labels = read_labels(filename_train['labels'])
-images = read_image(filename_train['images'])
-network = linear_load('mnist_linear.weights')
-epochs = 2
-learn(images, labels, epochs, 10)
