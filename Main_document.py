@@ -65,8 +65,6 @@ filename = {'images' : 't10k-images.idx3-ubyte' ,'labels' : 'train-images.idx3-u
 images = read_image(filename['images'])
 filename = {'images' : 't10k-labels.idx1-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
 labels = read_labels(filename['images'])
-M.dim(images)
-M.dim(labels)
 #assumes input is divisor of 5.
 
 def plot_images(images, labels, index_list):
@@ -206,8 +204,6 @@ network = linear_load('mnist_linear.weights')
 images = read_image('train-images.idx3-ubyte')
 labels = read_labels('train-labels.idx1-ubyte')
 image_vector = image_to_vector(images[0])
-
-import matrix_functions2 as M
 
 def predict(network, image):
     '''
@@ -475,4 +471,36 @@ def update(network, images, labels, sigma = 0.1):
 
 '''
 
-## ok
+def update(network, images, labels, sigma = 0.1):
+    A, b = network
+    A_list = [[0]*len(network[1]) for i in range(len(A))]
+    b_list = [[0 for i in range(len(b))]]
+
+    for n in range(len(images)):
+        x = image_to_vector(images[n])
+        a = predict(network, x)
+        y = categorical(labels[n])
+
+        for j in range(len(b)):
+
+            current_element = 2 * (a[j] - y[j]) / 10
+
+            b_list[0][j] += current_element
+
+            for i in range(len(A)):
+                A_list[i][j] += x[i] * current_element
+    
+    b_list_final = M.scalar_multiplication(b_list, (sigma * 1/len(images)))
+    b = M.sub([b], b_list_final)
+
+    A_list_final = M.scalar_multiplication(A_list, (sigma * 1/len(images)))
+    A = M.sub(A, A_list_final)
+
+    network = [A, b[0]]
+
+    return network
+
+updating_network = update(network, image_batch[0], label_batch[0])
+
+M.dim(updating_network)
+
