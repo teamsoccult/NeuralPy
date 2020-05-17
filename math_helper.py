@@ -4,24 +4,127 @@ TASKS: H, I, J, K, L, M
 import read_write_helper as RW
 ### HELPER FUNCTIONS
 
+## Dimensions
+
+def dim_recursive(S):
+    '''
+    Description: 
+    
+    Recursive function to calculate the dimensions of 
+    a list. 
+    Assumes that the input is a list, and that the sublists
+    are of equal lengths. 
+    Returns a list of the dimensions of S. 
+
+    ________
+
+    Arguments:
+
+    S = a list or list of lists
+    ________  
+
+    Examples:
+
+    >>> dim_recursive([[1,2,3], [2,3,4]])
+    [2, 3]
+
+    '''
+    if not type(S) == list:
+        return []
+    return [len(S)] + dim_recursive(S[0])
+
 def dim(S):
+    '''
+    Description:
+
+    Using the dim_recursive(function), this function ensures
+    that the returned list will have a length of 
+    2 or more. 
+    Assumes that the input is a list.
+    Returns a list of the length of the dimensions. 
+    ________
+
+    Arguments:
+
+    S = a list or list of lists
+    ________
+
+    Examples:
+
+    >>> dim([[1, 2, 3], [2, 3, 4]])
+    [2, 3]
+
+    >>> dim([1, 2, 3])
+    [1, 3]
+
+    '''
     dim_list = dim_recursive(S)
     if len(dim_list) < 2:
         dim_list.insert(0,1)
     return dim_list
 
-def dim_recursive(S):
-    if not type(S) == list:
-        return []
-    return [len(S)] + dim_recursive(S[0])
-
 ## Generators
 def gen_row(S):
+    '''
+    Description:
+
+    Generator function which iterates through the columns 
+    of a list of lists. 
+    Assumes that the input is list of lists, with 2 dimensions. 
+    Yields the element S[r][c], where r is iterated over first.
+    
+    ________
+
+    Arguments:
+    
+    S = list of lists with 2 dimensions
+    ________
+
+    Examples:
+
+    >>> gen_columns = gen_col([[1, 2, 3], [3, 4, 5], [5, 6, 7]])
+
+    >>> next(gen_columns)
+    1
+    >>> next(gen_columns)
+    3
+    >>> next(gen_columns)
+    5
+
+    '''
     for i in S:
         for j in i:
             yield j
 
 def gen_col(S):
+    '''
+    Description:
+
+    Generator function which iterates through the rows 
+    of a list of lists. 
+    Assumes that the input is list of lists with 2 dimensions, and that
+    the length of each sublist is equal.
+    Yields the element S[r][c], where c is iterated over first.
+
+    ________
+
+    Arguments:
+    
+    S = list of lists with 2 dimensions
+    ________
+
+    Examples:
+
+    >>> gen_rows = gen_row([[1, 2, 3], [3, 4, 5], [5, 6, 7]])
+
+    >>> next(gen_rows)
+    1
+    >>> next(gen_rows)
+    2
+    >>> next(gen_rows)
+    3
+
+    '''
     for i in range(len(S[0])):
         for j in S:
             yield j[i]
@@ -29,6 +132,32 @@ def gen_col(S):
 ### TASK H)
 
 def add(S, O):
+    '''
+    Description:
+
+    Adds a matrix to another matrix. Raises a ValueError 
+    if the matrices do not have the same dimensions.
+    In terms of linear algebra, this corresponds 
+    to the operation S + O, where both S and O are matrices.
+    Assumes that both lists have: 
+    (1) the same dimensions
+    (2) 2 dimensions.
+    Returns a list of lists, corresponding to the result of 
+    the addition of the two matrices.
+    ________
+
+    Arguments:
+    
+    S = list of lists with 2 dimensions
+    O = list of lists with 2 dimensions 
+    ________
+
+    Examples:
+
+    >>> add([[1, 2, 3], [3, 4, 5], [5,6,7]], [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+    [[2, 4, 6], [7, 9, 11], [12, 14, 16]]
+
+    '''
     if dim(S) != dim(O):
         raise ValueError("The two matrices do not have the same dimensions.")
     rows, columns = dim(S)
@@ -41,6 +170,33 @@ def add(S, O):
     return C
 
 def sub(S, O):
+    '''
+    Description:
+
+    Subtracts a matrix from another matrix. Raises a ValueError 
+    if the matrices do not have the same dimensions. 
+    In terms of linear algebra, this corresponds to the 
+    operation S - O, where both S and O are matrices.
+    Assumes that both lists have: 
+    (1) the same dimensions 
+    (2) 2 dimensions.
+    Returns a list of lists, corresponding to the result of 
+    the subtraction of the two matrices.
+
+    ________
+
+    Arguments:
+    
+    S = list of lists with 2 dimensions
+    O = list of lists with 2 dimensions 
+    ________
+
+    Examples:
+
+    >>> sub([[1, 2, 3], [4, 5, 6], [7, 8, 9]], [[1, 2, 3], [3, 4, 5], [5,6,7]])
+    [[0, 0, 0], [1, 1, 1], [2, 2, 2]]
+
+    '''
     if dim(S) != dim(O):
         raise ValueError("The two matrices do not have the same dimensions.")
     rows, columns = dim(S)
@@ -53,15 +209,76 @@ def sub(S, O):
     return C
 
 def scalar_multiplication(S, scalar):
-    generator_self = gen_row(S)
-    rows, columns = dim(S)
-    C = [[] for i in range(rows)]
-    for i in range(rows):
-        for j in range(columns):
-            C[i].append(next(generator_self)*scalar)
-    return C
+    '''
+    Description:
+
+    Multiplies the matrix with a scalar. Raises a ValueError
+    if scalar is not either an integer or a float.
+    In terms of linear algebra, this corresponds to
+    multipliying S * scalar, where S is a matrix and scalar
+    is an integer or a float.
+    Assumes that S is a list of lists with 2 dimensions, and that
+    scalar is either an integer or a float.
+    Returns a list of lists, where the scalar is multiplied with
+    every value of the list of lists.
+
+    ________
+
+    Arguments:
+    
+    S = list of lists with 2 dimensions
+    scalar = integer / float 
+    ________
+
+    Examples:
+
+    >>> scalar_multiplication([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 2)
+    [[2, 4, 6], [8, 10, 12], [14, 16, 18]]
+
+    '''
+    if isinstance(scalar, int) or isinstance(scalar, float):
+        generator_self = gen_row(S)
+        columns, rows = dim(S)
+        C = [[] for i in range(columns)]
+        for i in range(columns):
+            for j in range(rows):
+                C[i].append(next(generator_self)*scalar)
+        return C
+    else:
+        raise ValueError("Scalar must be either of type integer or type float.")
 
 def multiply(S, O):
+    '''
+    Description:
+
+    Multiplies the matrix with another matrix. 
+    Raises a ValueError if the amount of columns in S is not 
+    the same as the amount of rows in O.
+    In terms of linear algebra, this corresponds to
+    the matrix product of S * O, where S and O are both matrices.
+    
+    Assumes that S and O are lists of lists with 2 dimensions.
+    
+    Returns a list of lists, corresponding to matrix product of 
+    S * O.
+
+    ________
+
+    Arguments:
+    
+    S = list of lists with 2 dimensions
+    O = list of lists with 2 dimensions
+    ________
+
+    Examples:
+
+    >>> multiply([[1, 2, 3], [4, 5, 6]], [[2, 3], [4, 5], [6, 7]])
+    [[28, 34], [64, 79]]
+
+    >>> multiply([[2, 3], [4, 5], [6, 7]], [[1, 2, 3], [4, 5, 6]])
+    [[14, 19, 24], [24, 33, 42], [34, 47, 60]]
+
+    '''
     self_rows, self_columns = dim(S)
     other_rows, other_columns = dim(O)
 
@@ -83,6 +300,31 @@ def multiply(S, O):
     return C
 
 def transpose(S):
+    '''
+    Description:
+
+    Transposes a list of lists.
+    In terms of linear algebra, this corresponds to
+    A^T, where A is a matrix.
+    
+    Assumes that S is a list of lists of 2 dimensions.
+    
+    Returns a list of lists, where indexes are reversed i.e.
+    if the input is S[r][c], the returned list is S[c][r].
+
+    ________
+
+    Arguments:
+    
+    S = list of lists with 2 dimensions
+    ________
+
+    Examples:
+
+    >>> transpose([[1, 2, 3], [4, 5, 6]])
+    [[1, 4], [2, 5], [3, 6]]
+
+    '''
     A = gen_row(S)
     rows, columns = dim(S) # maybe smart.
     C = [[] for i in range(columns)] # empty list
@@ -95,6 +337,31 @@ def transpose(S):
 
 #also assert that both should be of equal length
 def mean_square_error(U, V):
+    '''
+    Description:
+
+    Calculates the mean square error between two lists.
+    Raises a TypeError if either input is not a list.
+    
+    Assumes that U and V are both lists of a single dimension.
+    
+    Returns a single number, which is the average of the 
+    squared sum of the element-wise difference between the two lists. 
+
+    ________
+
+    Arguments:
+    
+    U = list of a single dimension
+    V = list of a single dimension
+    ________
+
+    Examples:
+
+    >>> mean_square_error([1,2,3,4], [3,1,3,2])
+    2.25
+
+    '''
     if not isinstance(U, list) or not isinstance(V, list):
         raise TypeError("Input must be lists.")
     vector_sum = 0
@@ -105,6 +372,30 @@ def mean_square_error(U, V):
 ### TASK J)
 
 def argmax(V): ### inspired by https://stackoverflow.com/questions/2474015/getting-the-index-of-the-returned-max-or-min-item-using-max-min-on-a-list
+    '''
+    Description:
+
+    Finds the index of the maximum of a list. Raises a TypeError
+    if the input is not a list.
+    
+    Assumes that V is a list of a single dimension.
+    
+    Returns an integer, corresponding to the index of the 
+    maximum of a list.
+
+    ________
+
+    Arguments:
+    
+    V = list of a single dimension
+    ________
+
+    Examples:
+
+    >>> argmax([6, 2, 7, 10, 5])
+    3
+
+    '''
     if not isinstance(V, list):
         raise TypeError("Input must be a list.")
 
@@ -112,6 +403,33 @@ def argmax(V): ### inspired by https://stackoverflow.com/questions/2474015/getti
 
 ### TASK K):
 def categorical(label, classes = 10):
+    '''
+    Description:
+
+    Create the optimal prediction for a label.
+
+    Default value of classes are set to 10, as
+    we are only trying to recognize 10 numbers (0-9).
+    
+    Assumes that label is an integer, where label < classes.
+
+    Returns a list L of length classes, consisting of 0's 
+    except for L[label], which has the value 1.
+
+    ________
+
+    Arguments:
+    
+    label = integer
+    classes = integer (Optional) 
+    ________
+
+    Examples:
+
+    >>> categorical(3)
+    [0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+
+    '''
     return [0 if x != label else 1 for x in range(classes)]
 
 ### TASK L):
@@ -154,8 +472,6 @@ def predict(network, image):
     A, b = network
     image = [image] #manual for now
     xA = multiply(image, A)
-    dim_xA_rows, dim_xA_cols = dim(xA)
-    dim_b_rows, dim_b_cols = dim(b)
     b = [b] #manual for now.
     xAb = add(xA, b)
     xAb_unlisted = xAb[0]
@@ -164,6 +480,31 @@ def predict(network, image):
 ### TASK M)
 
 def evaluate(network, images, labels):
+    '''
+    Description:
+    Evaluates the predictions made by a network on list
+    of images and their corresponding labels. 
+    This evaluation is made using mean square error as a cost
+    function. The function calculates the mean cost as 
+    well as the mean accuracy. Mean accuracy is given in
+    percent.
+    Assumes that the images and labels correspond i.e.
+    image[i] has label labels[i]. 
+    Returns a tuple (predictions, cost, accuracy), where 
+    predictions is a list of all the predictions made,
+    cost is a float representing the mean cost of predictions
+    and accuracy is a float reflecting the percentage of
+    correct predictions.
+
+    ________
+
+    Arguments: ### HMM DON't KNOW ABOUT THE NETWORK STUFF - IS IT NEEDED?
+    network = list with size [2, y, z], where image vector (list) with of size [1, x] where
+    x is the number of columns (so it is a row vector).
+    network -- list with size [2, y, z] where y is the number
+    of
+
+    '''
     predictions = []
     cost = 0
     accuracy = 0
@@ -175,36 +516,52 @@ def evaluate(network, images, labels):
         if prediction_label == labels[i]:
             accuracy += 1
         predictions.append(prediction_label)
+    return (predictions, cost/len(images), 100 * accuracy/len(images))
+
+### OPTIONAL TOWN:
+
+'''
+Optional. Instead of using the mean squared error as 
+the cost function try to use the categorical 
+cross entropy (see e.g. this blog): 
+On output a where the expected output is the categorical 
+vector y, the categorical cross entropy is defined as 
+CE(y, softmax(a)), where softmax(a)i = eai / (∑j eaj) 
+and the cross entropy is defined as 
+CE(y, â) = − ∑i (yi · log âi). 
+In update the derivative of the cost function w.r.t. 
+output aj should be replaced by eaj /(∑k eak) − yj.
+Note. softmax(a) is a vector with the same length as a 
+with values having the same relative order as in a, but 
+elements are scalled so that softmax(a)i ∈ ]0,1[ and 
+1 = ∑i softmax(a)i. Furthermore, since y is categorical 
+with yi = 1 for exactly one i, 
+CE(y, softmax(a)) = log(∑j eaj) − ai.
+'''
+
+import math
+
+def softmaxx(V):
+    summing = sum([math.exp(x) for x in V])
+    return [math.exp(x)/summing for x in V]
+
+def CE(V, U):
+    V_mark = softmaxx(V)
+    return -sum([U[i] * math.log(V_mark[i]) for i in range(len(U))])
+
+def evaluate_CE(network, images, labels):
+    predictions = []
+    cost = 0
+    accuracy = 0
+    for i in range(len(images)):
+        image_vector = RW.image_to_vector(images[i])
+        prediction = predict(network, image_vector)
+        prediction_label = argmax(prediction)
+        cost += CE(prediction, categorical(labels[i]))
+        if prediction_label == labels[i]:
+            accuracy += 1
+        predictions.append(prediction_label)
     return (predictions, cost/len(images), accuracy/len(images))
 
-# ### Test:
-
-# list_matrix = [[1,2,3], [4,5,6]]
-# list_matrix2 = [[2,3],[4,5], [6,7]]
-# list_matrix3 = [[2,3,4], [5, 6,7]]
-
-# ### Dim:
-
-# dim(list_matrix)
-# dim(list_matrix2)
-# dim([1,2,3])
-
-# ### Add and sub:
-# add(list_matrix, list_matrix3)
-# sub(list_matrix3, list_matrix)
-
-# ###Scalar Multiplication
-# scalar_multiplication(list_matrix, 5)
-
-# ### Matrix multiplication:
-
-# multiply(list_matrix, list_matrix2)
-
-# multiply(list_matrix2, list_matrix)
-
-# multiply(list_matrix3, list_matrix)
-
-# ### Transpose:
-
-# transpose(list_matrix)
-# transpose(list_matrix2)
+import doctest
+doctest.testmod(verbose=True)

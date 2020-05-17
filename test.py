@@ -11,6 +11,7 @@ import read_write_helper as RW
 import plots_helper as P 
 
 ### FIRST GROUP:
+#__________________
 
 ## TASK B)
 
@@ -37,6 +38,7 @@ labels = RW.read_labels(filename['images'])
 P.plot_images(images, labels, index_list)
 
 ### SECOND GROUP:
+#__________________
 
 ## TASK F)
 
@@ -73,9 +75,12 @@ M.add(list_matrix, list_matrix2)
 M.sub(list_matrix, list_matrix2)
 
 # Scalar Multiplication
+
+#CHECK EXAMPLES
 M.scalar_multiplication(list_matrix, 5)
 
-M.scalar_multiplication(list_matrix, list_matrix2) ### REVERT TO ASSUMPTIONS FROM MATRIX_FUNCTIONS 2!!!
+#CHECK ASSUMPTIONS
+M.scalar_multiplication(list_matrix, list_matrix2) 
 
 # Matrix multiplication:
 
@@ -150,6 +155,7 @@ A, b = network
 P.weights_plot(A)
 
 ### THIRD GROUP:
+#__________________
 
 ## TASK P)
 
