@@ -2,25 +2,28 @@
 TASKS: H, I, J, K, L, M
 '''
 import read_write_helper as RW
+
 ### HELPER FUNCTIONS
 
 ## Dimensions
 
-def dim_recursive(S):
+def dim_recursive(S): #(heavily) inspired by https://stackoverflow.com/questions/17531796/find-the-dimensions-of-a-multidimensional-python-array?fbclid=IwAR1FMXJTEZjeMl08sojxZ4y9wNxCpqZL0EzWPUOSLgvV1YC5jchGvO9Js6I
     '''
     Description: 
     
     Recursive function to calculate the dimensions of 
     a list. 
+
     Assumes that the input is a list, and that the sublists
     are of equal lengths. 
-    Returns a list of the dimensions of S. 
+
+    Returns a list containing the dimensions of S. 
 
     ________
 
     Arguments:
 
-    S = a list or list of lists
+    S = list
     ________  
 
     Examples:
@@ -37,16 +40,19 @@ def dim(S):
     '''
     Description:
 
-    Using the dim_recursive(function), this function ensures
-    that the returned list will have a length of 
-    2 or more. 
+    Using the dim_recursive function, this function ensures
+    that if a list has only one dimension (row vector), the
+    returned list of dimensions will be [1, len(S)]. In all
+    other cases, it is the same as dim_recursive.
+
     Assumes that the input is a list.
-    Returns a list of the length of the dimensions. 
+
+    Returns a list containing the dimensions of S. 
     ________
 
     Arguments:
 
-    S = a list or list of lists
+    S = list 
     ________
 
     Examples:
@@ -68,44 +74,14 @@ def gen_row(S):
     '''
     Description:
 
-    Generator function which iterates through the columns 
-    of a list of lists. 
-    Assumes that the input is list of lists, with 2 dimensions. 
-    Yields the element S[r][c], where r is iterated over first.
+    Generator function which iterates through the sublists,
+    starting from the first, and exhausting each sublist 
+    before moving on to the next. 
+
+    Assumes that the input is list of lists, with 2 dimensions.
+
+    Yield an element of the list.
     
-    ________
-
-    Arguments:
-    
-    S = list of lists with 2 dimensions
-    ________
-
-    Examples:
-
-    >>> gen_columns = gen_col([[1, 2, 3], [3, 4, 5], [5, 6, 7]])
-
-    >>> next(gen_columns)
-    1
-    >>> next(gen_columns)
-    3
-    >>> next(gen_columns)
-    5
-
-    '''
-    for i in S:
-        for j in i:
-            yield j
-
-def gen_col(S):
-    '''
-    Description:
-
-    Generator function which iterates through the rows 
-    of a list of lists. 
-    Assumes that the input is list of lists with 2 dimensions, and that
-    the length of each sublist is equal.
-    Yields the element S[r][c], where c is iterated over first.
-
     ________
 
     Arguments:
@@ -125,6 +101,42 @@ def gen_col(S):
     3
 
     '''
+    for i in S:
+        for j in i:
+            yield j
+
+def gen_col(S):
+    '''
+    Description:
+
+    Generator function which iterates through the sublists,
+    yielding the first element of each sublist. 
+    This process in repeated until all elements of the list 
+    of lists have been yielded.
+
+    Assumes that the input is list of lists, with 2 dimensions.
+
+    Yield an element of the list.
+    
+    ________
+
+    Arguments:
+    
+    S = list
+    ________
+
+    Examples:
+
+    >>> gen_columns = gen_col([[1, 2, 3], [3, 4, 5], [5, 6, 7]])
+
+    >>> next(gen_columns)
+    1
+    >>> next(gen_columns)
+    3
+    >>> next(gen_columns)
+    5
+
+    '''
     for i in range(len(S[0])):
         for j in S:
             yield j[i]
@@ -139,11 +151,13 @@ def add(S, O):
     if the matrices do not have the same dimensions.
     In terms of linear algebra, this corresponds 
     to the operation S + O, where both S and O are matrices.
-    Assumes that both lists have: 
-    (1) the same dimensions
-    (2) 2 dimensions.
-    Returns a list of lists, corresponding to the result of 
-    the addition of the two matrices.
+
+    Assumes that both matrices have: 
+    (1) the same number of rows and columns 
+    (2) 2 dimensions when understood as lists
+
+    Returns a new list of lists, corresponding to the result
+    of the addition of the two matrices.
     ________
 
     Arguments:
@@ -154,7 +168,7 @@ def add(S, O):
 
     Examples:
 
-    >>> add([[1, 2, 3], [3, 4, 5], [5,6,7]], [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+    >>> add([[1, 2, 3], [3, 4, 5], [5, 6, 7]], [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
     [[2, 4, 6], [7, 9, 11], [12, 14, 16]]
 
     '''
@@ -177,10 +191,12 @@ def sub(S, O):
     if the matrices do not have the same dimensions. 
     In terms of linear algebra, this corresponds to the 
     operation S - O, where both S and O are matrices.
-    Assumes that both lists have: 
-    (1) the same dimensions 
-    (2) 2 dimensions.
-    Returns a list of lists, corresponding to the result of 
+
+    Assumes that both matrices have: 
+    (1) the same number of rows and columns 
+    (2) 2 dimensions when understood as lists
+
+    Returns a new list of lists, corresponding to the result of 
     the subtraction of the two matrices.
 
     ________
@@ -216,12 +232,13 @@ def scalar_multiplication(S, scalar):
     if scalar is not either an integer or a float.
     In terms of linear algebra, this corresponds to
     multipliying S * scalar, where S is a matrix and scalar
-    is an integer or a float.
-    Assumes that S is a list of lists with 2 dimensions, and that
-    scalar is either an integer or a float.
-    Returns a list of lists, where the scalar is multiplied with
-    every value of the list of lists.
+    is a number.
 
+    Assumes that S is a list of lists with 2 dimensions, and 
+    that scalar is either an integer or a float.
+
+    Returns a new list of lists, where S is scaled by 
+    a scalar. 
     ________
 
     Arguments:
@@ -252,15 +269,17 @@ def multiply(S, O):
     Description:
 
     Multiplies the matrix with another matrix. 
-    Raises a ValueError if the amount of columns in S is not 
-    the same as the amount of rows in O.
+    Raises a ValueError if the number of columns in S is not 
+    the same as the number of rows in O.
     In terms of linear algebra, this corresponds to
     the matrix product of S * O, where S and O are both matrices.
     
-    Assumes that S and O are lists of lists with 2 dimensions.
+    Assumes that S and O are lists of lists with 2 dimensions, 
+    and that the number of columns in S is the same as 
+    the number of rows in O.
     
     Returns a list of lists, corresponding to matrix product of 
-    S * O.
+    S * O. 
 
     ________
 
@@ -303,7 +322,7 @@ def transpose(S):
     '''
     Description:
 
-    Transposes a list of lists.
+    Transposes the matrix-equivalent of the input list.
     In terms of linear algebra, this corresponds to
     A^T, where A is a matrix.
     
@@ -326,9 +345,9 @@ def transpose(S):
 
     '''
     A = gen_row(S)
-    rows, columns = dim(S) # maybe smart.
-    C = [[] for i in range(columns)] # empty list
-    for i in range(rows): #will have the opposite dimensionality.
+    rows, columns = dim(S) 
+    C = [[] for i in range(columns)] 
+    for i in range(rows): 
         for j in range(columns):
             C[j].append(next(A))
     return(C)
@@ -341,19 +360,21 @@ def mean_square_error(U, V):
     Description:
 
     Calculates the mean square error between two lists.
-    Raises a TypeError if either input is not a list.
+    Raises a TypeError if either input is not a list, or
+    if the two lists do not have the same length. 
     
-    Assumes that U and V are both lists of a single dimension.
+    Assumes that U and V are both lists of one dimension.
     
     Returns a single number, which is the average of the 
-    squared sum of the element-wise difference between the two lists. 
+    squared sum of the element-wise difference between the 
+    two lists. 
 
     ________
 
     Arguments:
     
-    U = list of a single dimension
-    V = list of a single dimension
+    U = list of 1 dimension
+    V = list of 1 dimension
     ________
 
     Examples:
@@ -364,6 +385,8 @@ def mean_square_error(U, V):
     '''
     if not isinstance(U, list) or not isinstance(V, list):
         raise TypeError("Input must be lists.")
+    if len(V) != len(U):
+        raise TypeError("The two lists must have the same length.")
     vector_sum = 0
     for i in range(len(U)):
         vector_sum += (V[i]-U[i])**2
@@ -406,14 +429,18 @@ def categorical(label, classes = 10):
     '''
     Description:
 
-    Create the optimal prediction for a label.
+    Creates a list of length classes, containing zeroes in
+    all indexes except for the index "label".
+
+    In our case, label corresponds to the correct
+    classification of the image.
 
     Default value of classes are set to 10, as
     we are only trying to recognize 10 numbers (0-9).
     
     Assumes that label is an integer, where label < classes.
 
-    Returns a list L of length classes, consisting of 0's 
+    Returns a list L of length classes, consisting of zeroes 
     except for L[label], which has the value 1.
 
     ________
@@ -436,31 +463,25 @@ def categorical(label, classes = 10):
 def predict(network, image):
     '''
     Description:
-    Multiplies an image vector with the weights of a given network,
-    and adds this product with the bias of the network.
-    (is this correct?)
-    This corresponds to the networks prediction of what the image is.
+    Multiplies an image vector with the weights of a given 
+    network, and adds this product with the bias of the network.
+    This corresponds to the networks prediction of what 
+    the image is.
 
-    ________
+    Assumes that network is a nested list, consisting
+    of two lists of list. The first containing the weights of 
+    the network, and the second containing the bias of 
+    the network.
 
-    Assumptions:
-    Assumes that network is a nested list, with the sub-elements.
-    The first element (A) should have the same number of rows that
-    the image
-
-    ________
-
-    Returns:
     Returns a list of length equal to b (bias vector).
-    say something more..
 
     ________
 
-    Keyword arguments:
-    image -- image vector (list) with of size [1, x] where
-    x is the number of columns (so it is a row vector).
-    network -- list with size [2, y, z] where y is the number
-    of
+    Arguments:
+    image = image vector (list) of one dimension.
+    network = list of lists two sublists. The first being 
+    a list of lists containing the weights of the network. The 
+    containing the bias of the network. 
 
     ________
 
@@ -482,27 +503,31 @@ def predict(network, image):
 def evaluate(network, images, labels):
     '''
     Description:
+
     Evaluates the predictions made by a network on list
     of images and their corresponding labels. 
-    This evaluation is made using mean square error as a cost
-    function. The function calculates the mean cost as 
-    well as the mean accuracy. Mean accuracy is given in
-    percent.
+    This evaluation is made on the basis of using 
+    mean square error as a cost function. 
+    The function calculates the mean cost as well as the 
+    mean accuracy. Mean accuracy is given in percent.
+
     Assumes that the images and labels correspond i.e.
     image[i] has label labels[i]. 
+
     Returns a tuple (predictions, cost, accuracy), where 
     predictions is a list of all the predictions made,
     cost is a float representing the mean cost of predictions
-    and accuracy is a float reflecting the percentage of
-    correct predictions.
+    and accuracy is the percentage of correct predictions.
 
     ________
 
-    Arguments: ### HMM DON't KNOW ABOUT THE NETWORK STUFF - IS IT NEEDED?
-    network = list with size [2, y, z], where image vector (list) with of size [1, x] where
-    x is the number of columns (so it is a row vector).
-    network -- list with size [2, y, z] where y is the number
-    of
+    Arguments: 
+    image = list of images
+    network = list of lists two sublists. The first being 
+    a list of lists containing the weights of the network. The 
+    containing the bias of the network. 
+    labels = list of labels
+
 
     '''
     predictions = []

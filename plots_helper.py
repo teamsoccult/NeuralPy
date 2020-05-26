@@ -11,20 +11,14 @@ def plot_images(images, labels, index_list):
     Description:
     Returns multiple sub-plots of images.
 
-    ________
+    Assumes index_list has a length which is divisible by 5
+    (e.g., has length 5, 10, 15, 20, etc.).
 
-    Assumptions:
-    Assumes index_list has a length which returns an integer
-    when divided by 5 (e.g., has length 5, 10, 15, 20, etc.).
-
-    ________
-
-    Returns:
     Using the subplots function from matplotlib.pyplot we always
     plot 5 columns, and add additional rows depending on the
     size of the input. The function uses imshow to display the
-    pixel values as an image. The colormap "binary" is used, which
-    is a black and white representation and makes for easy
+    pixel values as an image. The colormap "binary" is used, 
+    which is a black and white representation and makes for easy
     deciphering of the digits. The title will be the label
     associated with the particular image. For aesthetic purposes
     we have removed the axis ticks and values, as these don't
@@ -32,10 +26,10 @@ def plot_images(images, labels, index_list):
 
     ________
 
-    Keyword arguments:
-    images -- list with any number of pixel images (usually 28x28).
-    labels -- list with any number of labels (e.g., '7') corresponding to images.
-    index_list -- list containing indexes of which images/labels to plot.
+    Arguments:
+    images = list with any number of pixel images (usually 28x28).
+    labels = list with any number of labels (e.g., '7') corresponding to images.
+    index_list = list containing indexes of which images/labels to plot.
 
     '''
 

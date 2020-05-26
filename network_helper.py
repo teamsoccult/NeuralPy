@@ -12,12 +12,16 @@ def create_batches(values, batch_size):
     '''
     Description:
 
-    Shuffles and partitions a list into smaller batches. 
     Using the random.shuffle function from the random module,
-    this function partitions a list of values into random batches of
-    length batch_size. The only exception is the last batch, which can be
-    of a smaller length.
-    Assumes that the input is a list and that batch_size is an integer.
+    this function partitions a list of values into random batches
+    of length "batch_size". 
+    The only exception is the last batch, which can be of 
+    a smaller length. If "batch_size" is not an integer,
+    a TypeError exception is raised.
+
+    Assumes that the input is a list and 
+    that batch_size is an integer.
+
     Returns a list of batches of values.
     ________
 
@@ -27,14 +31,17 @@ def create_batches(values, batch_size):
     batch_size = integer
     ________
     '''
-    values_list = []
-    values_copy = values[:]
-    random.shuffle(values_copy)
-    current_batch = 0
+    if isinstance(batch_size, int):
+        values_list = []
+        values_copy = values[:]
+        random.shuffle(values_copy)
+        current_batch = 0
 
-    while current_batch < len(values_copy):
-        current_batch += batch_size
-        values_list.append(values_copy[current_batch-batch_size:current_batch])
+        while current_batch < len(values_copy):
+            current_batch += batch_size
+            values_list.append(values_copy[current_batch-batch_size:current_batch])
+    else:
+        raise TypeError("batch_size must be an integer.")
 
     return values_list
 
@@ -44,16 +51,24 @@ def update(network, images, labels, sigma = 0.1):
     '''
     Description:
 
-    Updates the weights of a network. Using the 
+    Updates the weights and bias of a network. Using the 
     mean square error as a cost function, this function
     calculates one step of gradient descent, where 
     the stepsize is given by sigma. 
+
+    Uses the modules from the math_helper module and thus
+    inherits their assumptions and limitations. If need be,
+    check their documentation. 
+
+    Returns the updated network.
     ________
     
     Arguments:
 
-    network = ### AGAIN, DOES THIS NEED CLARIFICATION
-    images = list of images ##
+    network = list of lists two sublists. The first being 
+    a list of lists containing the weights of the network. The 
+    containing the bias of the network. 
+    images = list of images 
     labels = list of labels
     sigma = float (Optional)
     ________
@@ -87,6 +102,33 @@ def update(network, images, labels, sigma = 0.1):
 ### TASK R)
 
 def learn(images, labels, epochs, batch_size):
+    '''
+    Description:
+
+    Initializes a network consisting of random weights and 
+    biases. The network is then trained using the "update" 
+    function over a batch of images and labels. 
+    For each epoch, the images are partioned 
+    into smaller batches of images and labels. 
+    The network is succesively updated for each batch.
+
+    Furthermore, the function prints what 
+    epoch and batch number it is currently training on.
+    This is followed by another print, which is the 
+    accuracy of the updated network and the accuracy
+    of the previous network. 
+
+    Returns the best performing network in terms of accuracy
+    ________
+    
+    Arguments:
+
+    images = list of images 
+    labels = list of labels
+    epochs = integer
+    batch_size = integer
+    ________
+    '''
     #initializing the random network:
     b = [random.uniform(0, 1) for m in range(10)]
     A = [[random.uniform(0, 1/784) for n in range(10)] for n in range(784)]
