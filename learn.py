@@ -11,6 +11,7 @@ labels = RW.read_labels(filename_train['labels'])
 images = RW.read_image(filename_train['images'])
 network = RW.linear_load('mnist_linear.weights')
 batch_size = 100
-epochs = 1
+epochs = 3
 
 NH.learn(images, labels, epochs, batch_size)
+RW.linear_save("trained_network", NH.learn_CE(images, labels, epochs, batch_size))
