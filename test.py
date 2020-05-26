@@ -1,15 +1,14 @@
 '''
 TASKS: ALL
 ___________
-Description: 
+Description:
 Document for testing all functions from the module.
 '''
 
-import math_helper as M 
-import network_helper as NH 
+import math_helper as M
+import network_helper as NH
 import read_write_helper as RW
-import plots_helper as P 
-
+import plots_helper as P
 ### FIRST GROUP:
 #__________________
 
@@ -29,13 +28,14 @@ M.dim(images)
 
 ## TASK D)
 
-index_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+index_list = [5, 6, 12, 16, 20, 100, 200, 1000, 1500, 9999]
 filename = {'images' : 't10k-images.idx3-ubyte' ,'labels' : 'train-images.idx3-ubyte'}
 images = RW.read_image(filename['images'])
 filename = {'images' : 't10k-labels.idx1-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
 labels = RW.read_labels(filename['images'])
 
-P.plot_images(images, labels, index_list)
+P.plot_images(images, labels, index_list, columns = 5) #optional argument
+P.plot_images(images, labels) #without the optionals.
 
 ### SECOND GROUP:
 #__________________
@@ -80,7 +80,7 @@ M.sub(list_matrix, list_matrix2)
 M.scalar_multiplication(list_matrix, 5)
 
 #CHECK ASSUMPTIONS
-M.scalar_multiplication(list_matrix, list_matrix2) 
+M.scalar_multiplication(list_matrix, list_matrix2)
 
 # Matrix multiplication:
 
@@ -129,7 +129,7 @@ images = RW.read_image('train-images.idx3-ubyte')
 labels = RW.read_labels('train-labels.idx1-ubyte')
 image_vector = RW.image_to_vector(images[0])
 
-M.predict(network, image_vector) 
+M.predict(network, image_vector)
 
 ## TASK M)
 
@@ -145,14 +145,16 @@ filename = {'images' : 't10k-labels.idx1-ubyte' ,'labels' : 'train-labels.idx1-u
 labels = RW.read_labels(filename['images'])
 predictions = [7, 2, 1, 3, 4, 5, 6, 6, 8, 9, 10, 11]
 
-P.plot_images_new(images, labels, index_list, predictions)
+P.plot_images_new(images, labels, index_list, 5, predictions)
+P.plot_images_new(images, labels, 20, 5)
+P.plot_imags_new(images, labels)
 
 ## TASK O)
 
 network = RW.linear_load('mnist_linear.weights')
 A, b = network
 
-P.weights_plot(A)
+P.weights_plot(A, plt_col = 5)
 
 ### THIRD GROUP:
 #__________________
@@ -160,7 +162,7 @@ P.weights_plot(A)
 ## TASK P)
 
 l = NH.create_batches(list(range(8)), 3)
-l 
+l
 
 ## TASK Q)
 filename_test = {'images' : 't10k-images.idx3-ubyte' ,'labels' : 't10k-labels.idx1-ubyte'}
@@ -172,4 +174,3 @@ network = RW.linear_load('mnist_linear.weights')
 #PROBLEM: image_batch and label_batch does not exist, because we deleted it.
 
 #updating_network = NH.update(network, image_batch[0], label_batch[0])
-
