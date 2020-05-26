@@ -90,22 +90,29 @@ def learn(images, labels, epochs, batch_size):
     #initializing the random network:
     b = [random.uniform(0, 1) for m in range(10)]
     A = [[random.uniform(0, 1/784) for n in range(10)] for n in range(784)]
-    print(f"b dim {M.dim(b)}")
-    print(f"A dim {M.dim(A)}")
     network = [A, b]
-    print(f"network dim {M.dim(network)}")
+    prev_acc = 0
+
+    print("******** STARTING TO LEARN ********")
 
     for e in range(epochs):
+        batch_number = 0
         batches = create_batches(list(range(len(images))), batch_size)
         for i in batches: #this should be smarter..
+            batch_number += 1
             one_img_batch = [images[j] for j in i]
             one_lab_batch = [labels[j] for j in i]
-            print(f"one img batch {M.dim(one_img_batch)}")
-            print(f"one lab batch {M.dim(one_lab_batch)}")
+            print(f"Current Epoch: {e+1} | Current batch: {batch_number}\n_____________________________________")
             network = update(network, one_img_batch, one_lab_batch, sigma = 0.1)
             pred, cost, acc = M.evaluate(network, images, labels)
-            print(f"cost {cost}")
-            print(f"acc {acc}")
+            if prev_acc <= acc:
+                print(f"\nNew record of accuracy achieved!\nCurrent Accuracy: {acc:.2f}\nPrevious Accuracy: {prev_acc:.2f}\n")
+                prev_acc = acc
+                best_network = network 
+            else: 
+                print(f"\nAccuracy did not improve in this batch.\nCurrent Accuracy: {acc:.2f}\nPrevious Accuracy: {prev_acc:.2f}\n")
+    print("******** FINISHED LEARNING ********")
+    return best_network
 
 ### OPTIONAL TOWN:
 
@@ -137,3 +144,31 @@ def update_CE(network, images, labels, sigma = 0.1):
     A = M.sub(A, A_list_final)
     
     return [A, b[0]]
+
+def learn_CE(images, labels, epochs, batch_size): ## CURRENTLY *DOES NOT WORK* - PERFORMS TERRIBLY!!! Probably due to some misinterpretation in the derivative.
+    #initializing the random network:
+    b = [random.uniform(0, 1) for m in range(10)]
+    A = [[random.uniform(0, 1/784) for n in range(10)] for n in range(784)]
+    network = [A, b]
+    prev_acc = 0
+
+    print("******** STARTING TO LEARN ********")
+
+    for e in range(epochs):
+        batch_number = 0
+        batches = create_batches(list(range(len(images))), batch_size)
+        for i in batches: #this should be smarter..
+            batch_number += 1
+            one_img_batch = [images[j] for j in i]
+            one_lab_batch = [labels[j] for j in i]
+            print(f"Current Epoch: {e+1} | Current batch: {batch_number}\n_____________________________________")
+            network = update_CE(network, one_img_batch, one_lab_batch, sigma = 0.1)
+            pred, cost, acc = M.evaluate_CE(network, images, labels)
+            if prev_acc <= acc:
+                print(f"\nNew record of accuracy achieved!\nCurrent Accuracy: {acc:.2f}\nPrevious Accuracy: {prev_acc:.2f}\n")
+                prev_acc = acc
+                best_network = network 
+            else: 
+                print(f"\nAccuracy did not improve in this batch.\nCurrent Accuracy: {acc:.2f}\nPrevious Accuracy: {prev_acc:.2f}\n")
+    print("******** FINISHED LEARNING ********")
+    return best_network
