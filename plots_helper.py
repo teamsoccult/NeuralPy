@@ -11,14 +11,12 @@ def plot_images(images, labels, index_list = 10, columns = 5):
     '''
     Description:
     Returns multiple sub-plots of images.
-
-    Assumes index_list has a length which is divisible by 5
-    (e.g., has length 5, 10, 15, 20, etc.).
+    The function is flexible
 
     Using the subplots function from matplotlib.pyplot we always
     plot 5 columns, and add additional rows depending on the
     size of the input. The function uses imshow to display the
-    pixel values as an image. The colormap "binary" is used, 
+    pixel values as an image. The colormap "binary" is used,
     which is a black and white representation and makes for easy
     deciphering of the digits. The title will be the label
     associated with the particular image. For aesthetic purposes
@@ -31,6 +29,9 @@ def plot_images(images, labels, index_list = 10, columns = 5):
     images = list with any number of pixel images (usually 28x28).
     labels = list with any number of labels (e.g., '7') corresponding to images.
     index_list = list containing indexes of which images/labels to plot.
+    This can also be specified as an integer, in which case the function
+    will simply plot that amount of images, starting from the first
+    image in the provided list of images/labels.
 
     '''
     #first, test whether index list has been specified.
@@ -66,12 +67,14 @@ def plot_images_new(images, labels, index_list = 10, columns = 5, predictions = 
         total_img = len(index_list)
     else:
         total_img = index_list
+        index_list = [x for x in range(index_list)]
 
     if predictions == None:
         predictions = labels
-        
+
     rows = math.ceil(total_img/columns)
     fig, axs = plt.subplots(rows, columns)
+    
     for i in range(rows):
         cols_left = min(total_img, columns)
         if total_img < columns:
