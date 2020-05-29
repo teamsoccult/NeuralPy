@@ -107,13 +107,13 @@ def plot_images_new(images, labels, index_list = 10, columns = 5, predictions = 
     else:
         total_img = index_list
         index_list = [x for x in range(index_list)]
-        print(index_list)
 
     if predictions == None:
         predictions = labels
 
     rows = math.ceil(total_img/columns)
     fig, axs = plt.subplots(rows, columns)
+    
     for i in range(rows):
         cols_left = min(total_img, columns)
         if total_img < columns:

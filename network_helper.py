@@ -5,6 +5,7 @@ TASKS: P, Q
 import random
 import math_helper as M
 import read_write_helper as RW
+import time
 
 ### TASK P)
 
@@ -129,6 +130,10 @@ def learn(images, labels, epochs, batch_size):
     batch_size = integer
     ________
     '''
+    #timing 
+    start = time.time()
+
+
     #initializing the random network:
     b = [random.uniform(0, 1) for m in range(10)]
     A = [[random.uniform(0, 1/784) for n in range(10)] for n in range(784)]
@@ -140,13 +145,20 @@ def learn(images, labels, epochs, batch_size):
     for e in range(epochs):
         batch_number = 0
         batches = create_batches(list(range(len(images))), batch_size)
-        for i in batches: #this should be smarter..
+
+        print(f"batches: {time.time()-start}")
+
+        for i in batches: 
             batch_number += 1
             one_img_batch = [images[j] for j in i]
+            print(f"img_batch: {time.time()-start}")
             one_lab_batch = [labels[j] for j in i]
+            print(f"lab_batches: {time.time()-start}")
             print(f"Current Epoch: {e+1} | Current batch: {batch_number}\n_____________________________________")
             network = update(network, one_img_batch, one_lab_batch, sigma = 0.1)
+            print(f"update: {time.time()-start}")
             pred, cost, acc = M.evaluate(network, images, labels)
+            print(f"Evaluate: {time.time()-start}")
             if prev_acc <= acc:
                 print(f"\nNew record of accuracy achieved!\nCurrent Accuracy: {acc:.2f}\nPrevious Accuracy: {prev_acc:.2f}\n")
                 prev_acc = acc
