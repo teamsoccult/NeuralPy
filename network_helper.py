@@ -1,5 +1,5 @@
 '''
-TASKS: P, Q 
+TASKS: P, Q, R 
 '''
 
 import random
