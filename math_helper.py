@@ -9,7 +9,6 @@ import read_write_helper as RW
 
 def dim_recursive(S): #(heavily) inspired by https://stackoverflow.com/questions/17531796/find-the-dimensions-of-a-multidimensional-python-array?fbclid=IwAR1FMXJTEZjeMl08sojxZ4y9wNxCpqZL0EzWPUOSLgvV1YC5jchGvO9Js6I
     '''
-<<<<<<< HEAD
     Description: 
     
     Recursive function to calculate the dimensions of 
@@ -19,27 +18,13 @@ def dim_recursive(S): #(heavily) inspired by https://stackoverflow.com/questions
     are of equal lengths. 
 
     Returns a list containing the dimensions of S. 
-=======
-    Description:
-
-    Recursive function to calculate the dimensions of
-    a list.
-    Assumes that the input is a list, and that the sublists
-    are of equal lengths.
-    Returns a list of the dimensions of S.
->>>>>>> 81a50efe8ef0060bfce17fac1db337f44ce852cf
 
     ________
 
     Arguments:
 
-<<<<<<< HEAD
     S = list
     ________  
-=======
-    S = a list or list of lists
-    ________
->>>>>>> 81a50efe8ef0060bfce17fac1db337f44ce852cf
 
     Examples:
 
@@ -55,7 +40,6 @@ def dim(S):
     '''
     Description:
 
-<<<<<<< HEAD
     Using the dim_recursive function, this function ensures
     that if a list has only one dimension (row vector), the
     returned list of dimensions will be [1, len(S)]. In all
@@ -64,13 +48,6 @@ def dim(S):
     Assumes that the input is a list.
 
     Returns a list containing the dimensions of S. 
-=======
-    Using the dim_recursive(function), this function ensures
-    that the returned list will have a length of
-    2 or more.
-    Assumes that the input is a list.
-    Returns a list of the length of the dimensions.
->>>>>>> 81a50efe8ef0060bfce17fac1db337f44ce852cf
     ________
 
     Arguments:
@@ -97,7 +74,6 @@ def gen_row(S):
     '''
     Description:
 
-<<<<<<< HEAD
     Generator function which iterates through the sublists,
     starting from the first, and exhausting each sublist 
     before moving on to the next. 
@@ -106,13 +82,6 @@ def gen_row(S):
 
     Yield an element of the list.
     
-=======
-    Generator function which iterates through the columns
-    of a list of lists.
-    Assumes that the input is list of lists, with 2 dimensions.
-    Yields the element S[r][c], where r is iterated over first.
-
->>>>>>> 81a50efe8ef0060bfce17fac1db337f44ce852cf
     ________
 
     Arguments:
@@ -140,33 +109,20 @@ def gen_col(S):
     '''
     Description:
 
-<<<<<<< HEAD
     Generator function which iterates through the sublists,
     yielding the first element of each sublist. 
     This process in repeated until all elements of the list 
     of lists have been yielded.
 
     Assumes that the input is list of lists, with 2 dimensions.
-=======
-    Generator function which iterates through the rows
-    of a list of lists.
-    Assumes that the input is list of lists with 2 dimensions, and that
-    the length of each sublist is equal.
-    Yields the element S[r][c], where c is iterated over first.
->>>>>>> 81a50efe8ef0060bfce17fac1db337f44ce852cf
 
     Yield an element of the list.
     
     ________
 
     Arguments:
-<<<<<<< HEAD
     
     S = list
-=======
-
-    S = list of lists with 2 dimensions
->>>>>>> 81a50efe8ef0060bfce17fac1db337f44ce852cf
     ________
 
     Examples:
@@ -195,7 +151,6 @@ def add(S, O):
     if the matrices do not have the same dimensions.
     In terms of linear algebra, this corresponds
     to the operation S + O, where both S and O are matrices.
-<<<<<<< HEAD
 
     Assumes that both matrices have: 
     (1) the same number of rows and columns 
@@ -203,13 +158,6 @@ def add(S, O):
 
     Returns a new list of lists, corresponding to the result
     of the addition of the two matrices.
-=======
-    Assumes that both lists have:
-    (1) the same dimensions
-    (2) 2 dimensions.
-    Returns a list of lists, corresponding to the result of
-    the addition of the two matrices.
->>>>>>> 81a50efe8ef0060bfce17fac1db337f44ce852cf
     ________
 
     Arguments:
@@ -243,19 +191,12 @@ def sub(S, O):
     if the matrices do not have the same dimensions.
     In terms of linear algebra, this corresponds to the
     operation S - O, where both S and O are matrices.
-<<<<<<< HEAD
 
     Assumes that both matrices have: 
     (1) the same number of rows and columns 
     (2) 2 dimensions when understood as lists
 
     Returns a new list of lists, corresponding to the result of 
-=======
-    Assumes that both lists have:
-    (1) the same dimensions
-    (2) 2 dimensions.
-    Returns a list of lists, corresponding to the result of
->>>>>>> 81a50efe8ef0060bfce17fac1db337f44ce852cf
     the subtraction of the two matrices.
 
     ________
@@ -327,7 +268,6 @@ def multiply(S, O):
     '''
     Description:
 
-<<<<<<< HEAD
     Multiplies the matrix with another matrix. 
     Raises a ValueError if the number of columns in S is not 
     the same as the number of rows in O.
@@ -340,18 +280,6 @@ def multiply(S, O):
     
     Returns a list of lists, corresponding to matrix product of 
     S * O. 
-=======
-    Multiplies the matrix with another matrix.
-    Raises a ValueError if the amount of columns in S is not
-    the same as the amount of rows in O.
-    In terms of linear algebra, this corresponds to
-    the matrix product of S * O, where S and O are both matrices.
-
-    Assumes that S and O are lists of lists with 2 dimensions.
-
-    Returns a list of lists, corresponding to matrix product of
-    S * O.
->>>>>>> 81a50efe8ef0060bfce17fac1db337f44ce852cf
 
     ________
 
@@ -432,7 +360,6 @@ def mean_square_error(U, V):
     Description:
 
     Calculates the mean square error between two lists.
-<<<<<<< HEAD
     Raises a TypeError if either input is not a list, or
     if the two lists do not have the same length. 
     
@@ -441,27 +368,13 @@ def mean_square_error(U, V):
     Returns a single number, which is the average of the 
     squared sum of the element-wise difference between the 
     two lists. 
-=======
-    Raises a TypeError if either input is not a list.
-
-    Assumes that U and V are both lists of a single dimension.
-
-    Returns a single number, which is the average of the
-    squared sum of the element-wise difference between the two lists.
->>>>>>> 81a50efe8ef0060bfce17fac1db337f44ce852cf
 
     ________
 
     Arguments:
-<<<<<<< HEAD
     
     U = list of 1 dimension
     V = list of 1 dimension
-=======
-
-    U = list of a single dimension
-    V = list of a single dimension
->>>>>>> 81a50efe8ef0060bfce17fac1db337f44ce852cf
     ________
 
     Examples:
@@ -527,11 +440,7 @@ def categorical(label, classes = 10):
 
     Assumes that label is an integer, where label < classes.
 
-<<<<<<< HEAD
     Returns a list L of length classes, consisting of zeroes 
-=======
-    Returns a list L of length classes, consisting of 0's
->>>>>>> 81a50efe8ef0060bfce17fac1db337f44ce852cf
     except for L[label], which has the value 1.
 
     ________
@@ -596,7 +505,6 @@ def evaluate(network, images, labels):
     Description:
 
     Evaluates the predictions made by a network on list
-<<<<<<< HEAD
     of images and their corresponding labels. 
     This evaluation is made on the basis of using 
     mean square error as a cost function. 
@@ -607,16 +515,6 @@ def evaluate(network, images, labels):
     image[i] has label labels[i]. 
 
     Returns a tuple (predictions, cost, accuracy), where 
-=======
-    of images and their corresponding labels.
-    This evaluation is made using mean square error as a cost
-    function. The function calculates the mean cost as
-    well as the mean accuracy. Mean accuracy is given in
-    percent.
-    Assumes that the images and labels correspond i.e.
-    image[i] has label labels[i].
-    Returns a tuple (predictions, cost, accuracy), where
->>>>>>> 81a50efe8ef0060bfce17fac1db337f44ce852cf
     predictions is a list of all the predictions made,
     cost is a float representing the mean cost of predictions
     and accuracy is the percentage of correct predictions.
