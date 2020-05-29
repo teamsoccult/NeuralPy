@@ -10,31 +10,34 @@ def plot_images(images, labels, index_list = 10, columns = 5):
 
     '''
     Description:
-    Returns multiple sub-plots of images.
-    The function is flexible
-
-    Using the subplots function from matplotlib.pyplot we always
-    plot 5 columns, and add additional rows depending on the
-    size of the input. The function uses imshow to display the
-    pixel values as an image. The colormap "binary" is used,
-    which is a black and white representation and makes for easy
-    deciphering of the digits. The title will be the label
-    associated with the particular image. For aesthetic purposes
-    we have removed the axis ticks and values, as these don't
-    actually correspond to anything meaningful in this case.
+    Returns multiple sub-plots of images with labels.
+    It uses the subplots and the imshow function from matplotlib.pyplot.
+    Uses a "binary" colormap for a clear black and white
+    representation. Axis ticks and values are removed for
+    aesthetic purposes.
 
     ________
 
     Arguments:
     images = list with any number of pixel images (usually 28x28).
+
     labels = list with any number of labels (e.g., '7') corresponding to images.
+
     index_list = list containing indexes of which images/labels to plot.
     This can also be specified as an integer, in which case the function
     will simply plot that amount of images, starting from the first
     image in the provided list of images/labels.
 
+    columns = integer specifying how many columns the subplots that
+    the function returns are arranged in.
+
+    ________
+
+    Examples:
+    for examples, see test.py.
+
     '''
-    #first, test whether index list has been specified.
+
     if isinstance(index_list, list):
         total_img = len(index_list)
     else:
@@ -63,6 +66,42 @@ def plot_images(images, labels, index_list = 10, columns = 5):
 ### TASK N)
 
 def plot_images_new(images, labels, index_list = 10, columns = 5, predictions = None):
+
+    '''
+    Description:
+    Returns multiple sub-plots of images with labels.
+    It uses the subplots and the imshow function from matplotlib.pyplot.
+    Uses a "binary" colormap for a clear black and white
+    representation. Axis ticks and values are removed for
+    aesthetic purposes. In addition will display a message
+    whenever predictions differ from the correct labels.
+
+    ________
+
+    Arguments:
+    images = list with any number of pixel images (usually 28x28).
+
+    labels = list with any number of labels (e.g., '7') corresponding to images.
+
+    index_list = list containing indexes of which images/labels to plot.
+    This can also be specified as an integer, in which case the function
+    will simply plot that amount of images, starting from the first
+    image in the provided list of images/labels.
+
+    columns = integer specifying how many columns the subplots that
+    the function returns are arranged in.
+
+    predictions = a list of predictions (in this case concretely
+    predictions of digits by a neural network). The format should
+    mathc that of labels.
+
+    ________
+
+    Examples:
+    for examples, see test.py.
+
+    '''
+
     if isinstance(index_list, list):
         total_img = len(index_list)
     else:
@@ -96,7 +135,34 @@ def plot_images_new(images, labels, index_list = 10, columns = 5, predictions = 
 ### TASK O)
 
 def weights_plot(A, plt_col = 5, image_dim = 28): #weights count = integer.
-    #prep.
+
+    '''
+    Description:
+    Returns multiple sub-plots of heatmaps of the weights
+    of a neural network. It uses the subplots and the imshow function
+    from matplotlib.pyplot. Axis ticks and values are removed for
+    aesthetic purposes. In addition will display a message
+    whenever predictions differ from the correct labels.
+
+    ________
+
+    Arguments:
+    A = A matrix (list of lists) of weights from a neural network.
+
+    plt_col = Integer specifying how many columns the subplots that
+    the function returns are arranged in.
+
+    image_dim = Dimension of the picture to plot. In our case,
+    this will always be 28x28, but should generalize to other
+    formats. 
+
+    ________
+
+    Examples:
+    for examples, see test.py.
+
+    '''
+
     cols_A = M.gen_col(A)
     rows, columns = M.dim(A)
 
