@@ -1,37 +1,23 @@
+#external libraries
 import matplotlib.pyplot as plt
 from pylab import *
 import numpy as np
+import math
 
-x = np.linspace(0, 2*np.pi, 400)
-y = np.sin(x**2)
-
-subplots_adjust(hspace=0.000)
-number_of_subplots=3
-
-for i,v in enumerate(range(number_of_subplots)):
-    for i in 1
-    v = v+1
-    ax1 = subplot(number_of_subplots,1,v)
-    ax1.plot(x,y)
-
-plt.show()
-
-
-##needed files:
+#needed modules:
 import math_helper as M
 import network_helper as NH
 import read_write_helper as RW
 import plots_helper as P
+
+
 index_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 filename = {'images' : 't10k-images.idx3-ubyte' ,'labels' : 'train-images.idx3-ubyte'}
 images = RW.read_image(filename['images'])
 filename = {'images' : 't10k-labels.idx1-ubyte' ,'labels' : 'train-labels.idx1-ubyte'}
 labels = RW.read_labels(filename['images'])
-###
-import matplotlib.pyplot as plt
-### TASK D)
-import math_helper as M
 
+# plot images:
 def plot_images(images, labels, index_list, columns = 5): #placeholder.
     total_img = len(index_list)
     rows = math.ceil(total_img/columns)
@@ -62,7 +48,6 @@ labels = RW.read_labels(filename['images'])
 predictions = [7, 2, 1, 3, 4, 5, 6, 6, 8, 9, 10, 11]
 
 import math
-math.ceil(2.4)
 
 def plot_images_new(images, labels, index_list, columns = 5):
     if predictions == None:
