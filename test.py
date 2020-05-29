@@ -37,6 +37,12 @@ labels = RW.read_labels(filename['images'])
 P.plot_images(images, labels, index_list, columns = 5) #optional argument
 P.plot_images(images, labels) #without the optionals.
 
+#Check flexibility
+
+index_list = 15
+P.plot_images(images, labels, index_list, columns = 6) #optional argument
+
+
 ### SECOND GROUP:
 #__________________
 
@@ -50,9 +56,9 @@ RW.linear_save('json_test', json_string)
 
 ## TASK G)
 
-RW.image_to_vector(images[2])
+M.dim(RW.image_to_vector(images[2]))
 
-## TASK H)
+## TASK H
 
 list_matrix = [[1,2,3], [4,5,6]]
 list_matrix2 = [[2,3],[4,5], [6,7]]
@@ -147,7 +153,7 @@ predictions = [7, 2, 1, 3, 4, 5, 6, 6, 8, 9, 10, 11]
 
 P.plot_images_new(images, labels, index_list, 5, predictions)
 P.plot_images_new(images, labels, 20, 5)
-P.plot_imags_new(images, labels)
+P.plot_images_new(images, labels)
 
 ## TASK O)
 
@@ -171,6 +177,6 @@ labels = RW.read_labels(filename_train['labels'])
 images = RW.read_image(filename_train['images'])
 network = RW.linear_load('mnist_linear.weights')
 
-#PROBLEM: image_batch and label_batch does not exist, because we deleted it.
+updating_network = NH.update(network, images[:100], labels[:100])
 
-#updating_network = NH.update(network, image_batch[0], label_batch[0])
+M.dim(updating_network)

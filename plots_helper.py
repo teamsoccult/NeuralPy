@@ -70,7 +70,6 @@ def plot_images_new(images, labels, index_list = 10, columns = 5, predictions = 
     if predictions == None:
         predictions = labels
         
-    total_img = len(index_list)
     rows = math.ceil(total_img/columns)
     fig, axs = plt.subplots(rows, columns)
     for i in range(rows):
