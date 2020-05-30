@@ -1,0 +1,155 @@
+PWD c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report
+INPUT C:\Users\Mikkel\AppData\Local\MiKTeX\2.9\miktex\data\le\pdftex\pdflatex.fmt
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\master-document.tex
+OUTPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\master-document.log
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\report.cls
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\report.cls
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size10.clo
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size10.clo
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\kantlipsum\kantlipsum.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\kantlipsum\kantlipsum.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3kernel\expl3.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3kernel\expl3.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3backend\l3backend-pdfmode.def
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3backend\l3backend-pdfmode.def
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3packages\xparse\xparse.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3packages\xparse\xparse.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdfpages\pdfpages.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdfpages\pdfpages.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ifthen.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ifthen.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\calc.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\calc.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\eso-pic\eso-pic.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\eso-pic\eso-pic.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\generic\atbegshi\atbegshi.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\generic\atbegshi\atbegshi.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\generic\infwarerr\infwarerr.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\generic\infwarerr\infwarerr.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ltxcmds\ltxcmds.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ltxcmds\ltxcmds.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\generic\iftex\iftex.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\generic\iftex\iftex.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdfpages\pppdftex.def
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdfpages\pppdftex.def
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\master-document.aux
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\master-document.aux
+OUTPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\master-document.aux
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\mkii\supp-pdf.mkii
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\mkii\supp-pdf.mkii
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\epstopdf-pkg\epstopdf-base.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\epstopdf-pkg\epstopdf-base.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdflscape\pdflscape.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdflscape\pdflscape.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\lscape.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\lscape.sty
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+OUTPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\master-document.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\project-front-page.pdf
+INPUT C:\Users\Mikkel\AppData\Local\MiKTeX\2.9\pdftex\config\pdftex.map
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\main-text.pdf
+INPUT c:\Users\Mikkel\Documents\PythonProjects\PythonFinalProject\NeuralPy\report\master-document.aux
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx10.pfb
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx10.pfb
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmbx12.pfb
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr10.pfb
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr17.pfb
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmr17.pfb
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmtt10.pfb
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\public\amsfonts\cm\cmtt10.pfb
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\urw\courier\ucrr8a.pfb
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\urw\courier\ucrr8a.pfb
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\urw\times\utmb8a.pfb
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\urw\times\utmb8a.pfb
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\urw\times\utmr8a.pfb
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\urw\times\utmr8a.pfb
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\urw\times\utmri8a.pfb
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\type1\urw\times\utmri8a.pfb
