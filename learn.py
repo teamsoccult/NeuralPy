@@ -50,6 +50,8 @@ M.evaluate(fast_network, images, labels)
 #Initialize untrained network
 untrained_network = [[random.uniform(0, 1/784) for n in range(10)] for n in range(784)]
 
+# SAVE THE PLOTS
+
 P.weights_plot(network[0]).savefig("images/linear_network.png")
 P.weights_plot(fast_network[0]).savefig("images/fast_network.png")
 P.weights_plot(untrained_network).savefig("images/untrained_network.png")
