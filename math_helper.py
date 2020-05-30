@@ -543,28 +543,12 @@ def evaluate(network, images, labels):
         predictions.append(prediction_label)
     return (predictions, cost/len(images), 100 * accuracy/len(images))
 
-### OPTIONAL TOWN:
-
-'''
-Optional. Instead of using the mean squared error as
-the cost function try to use the categorical
-cross entropy (see e.g. this blog):
-On output a where the expected output is the categorical
-vector y, the categorical cross entropy is defined as
-CE(y, softmax(a)), where softmax(a)i = eai / (∑j eaj)
-and the cross entropy is defined as
-CE(y, â) = − ∑i (yi · log âi).
-In update the derivative of the cost function w.r.t.
-output aj should be replaced by eaj /(∑k eak) − yj.
-Note. softmax(a) is a vector with the same length as a
-with values having the same relative order as in a, but
-elements are scalled so that softmax(a)i ∈ ]0,1[ and
-1 = ∑i softmax(a)i. Furthermore, since y is categorical
-with yi = 1 for exactly one i,
-CE(y, softmax(a)) = log(∑j eaj) − ai.
-'''
+### OPTIONAL TASKS
+### ______________
 
 ### TASK S) 
+
+### NOTE: TASK S was not completed fully. We left the steps we took to solve the task, as we hope to come back to it after the handin.
 
 import math
 
@@ -576,7 +560,7 @@ def CE(V, U):
     V_mark = softmaxx(V)
     return -sum([U[i] * math.log(V_mark[i]) for i in range(len(U))])
 
-def evaluate_CE(network, images, labels):
+def evaluate_CE(network, images, labels):  
     predictions = []
     cost = 0
     accuracy = 0

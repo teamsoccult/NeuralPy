@@ -1,9 +1,5 @@
 '''
-<<<<<<< HEAD
-TASKS: P, Q, R, and more.
-=======
-TASKS: P, Q, R 
->>>>>>> fae3a12a2017de69e36dbdf3a15ea12238d7e14a
+TASKS: P, Q, R, and parts of S
 '''
 
 import math
@@ -212,7 +208,14 @@ def fast_learn(images, labels, epochs, batch_size):
     print("******** FINISHED LEARNING ********")
     return network
 
-### OPTIONAL TOWN:
+### OPTIONAL TASKS:
+### ______________
+
+### TASK S
+
+import math 
+
+### NOTE: The following functions DO NOT currently work!! Most probably due to some error in implementing the derivative.
 
 def update_CE(network, images, labels, sigma = 0.1):
     A, b = network
