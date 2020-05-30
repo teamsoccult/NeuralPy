@@ -1,5 +1,5 @@
 \documentclass[letterpaper, 12 pt, conference]{ieeeconf}
-\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\usepackage{url}
 \usepackage{subcaption}
 \usepackage{hyperref}
 \hypersetup{
@@ -14,6 +14,7 @@
 NeuralPy
 }
 
+\author{Github: \url{https://github.com/teamsoccult/NeuralPy}}
 
 \begin{document}
 
@@ -21,7 +22,7 @@ NeuralPy
 
 \section{Introduction to the structure of the code}
 
-We decided early that we wanted to document the code as well as possible, and then upload the whole project to github. The result can be found here: \url{https://github.com/teamsoccult/NeuralPy}.
+We decided early that we wanted to document the code as well as possible, and then upload the whole project to github. 
 We opted for an overall structure in which tasks of similar nature were grouped into different files. The functions in these files can then be loaded as modules and used in other documents. This is useful in order to avoid having one huge and messy file. In addition, other projects could potentially use only the modules relevant to them. We will now provide a quick overview of the file-structure before discussing design choices, plotting and testing.
 
 The partitioning of tasks resulted in six files: 
