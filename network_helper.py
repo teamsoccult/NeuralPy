@@ -1,12 +1,15 @@
 '''
+<<<<<<< HEAD
 TASKS: P, Q, R, and more.
+=======
+TASKS: P, Q, R 
+>>>>>>> fae3a12a2017de69e36dbdf3a15ea12238d7e14a
 '''
 
 import math
 import random
 import math_helper as M
 import read_write_helper as RW
-import time
 
 ### TASK P)
 

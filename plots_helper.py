@@ -194,3 +194,4 @@ def weights_plot(A, plt_col = 5, image_dim = 28): #weights count = integer.
         columns -= plt_col
     fig.tight_layout()
     plt.show()
+    return fig
