@@ -5,7 +5,6 @@ TASKS: P, Q, R
 import random
 import math_helper as M
 import read_write_helper as RW
-import time
 
 ### TASK P)
 
