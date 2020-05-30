@@ -1,7 +1,8 @@
 '''
-TASKS: P, Q, R 
+TASKS: P, Q, R, and parts of S
 '''
 
+import math
 import random
 import math_helper as M
 import read_write_helper as RW
@@ -14,12 +15,12 @@ def create_batches(values, batch_size):
 
     Using the random.shuffle function from the random module,
     this function partitions a list of values into random batches
-    of length "batch_size". 
-    The only exception is the last batch, which can be of 
+    of length "batch_size".
+    The only exception is the last batch, which can be of
     a smaller length. If "batch_size" is not an integer,
     a TypeError exception is raised.
 
-    Assumes that the input is a list and 
+    Assumes that the input is a list and
     that batch_size is an integer.
 
     Returns a list of batches of values.
@@ -27,7 +28,7 @@ def create_batches(values, batch_size):
 
     Arguments:
 
-    values = list 
+    values = list
     batch_size = integer
     ________
     '''
@@ -51,24 +52,24 @@ def update(network, images, labels, sigma = 0.1):
     '''
     Description:
 
-    Updates the weights and bias of a network. Using the 
+    Updates the weights and bias of a network. Using the
     mean square error as a cost function, this function
-    calculates one step of gradient descent, where 
-    the stepsize is given by sigma. 
+    calculates one step of gradient descent, where
+    the stepsize is given by sigma.
 
     Uses the modules from the math_helper module and thus
     inherits their assumptions and limitations. If need be,
-    check their documentation. 
+    check their documentation.
 
     Returns the updated network.
     ________
-    
+
     Arguments:
 
-    network = list of lists two sublists. The first being 
-    a list of lists containing the weights of the network. The 
-    containing the bias of the network. 
-    images = list of images 
+    network = list of lists two sublists. The first being
+    a list of lists containing the weights of the network. The
+    containing the bias of the network.
+    images = list of images
     labels = list of labels
     sigma = float (Optional)
     ________
@@ -105,25 +106,25 @@ def learn(images, labels, epochs, batch_size):
     '''
     Description:
 
-    Initializes a network consisting of random weights and 
-    biases. The network is then trained using the "update" 
-    function over a batch of images and labels. 
-    For each epoch, the images are partioned 
-    into smaller batches of images and labels. 
+    Initializes a network consisting of random weights and
+    biases. The network is then trained using the "update"
+    function over a batch of images and labels.
+    For each epoch, the images are partioned
+    into smaller batches of images and labels.
     The network is succesively updated for each batch.
 
-    Furthermore, the function prints what 
+    Furthermore, the function prints what
     epoch and batch number it is currently training on.
-    This is followed by another print, which is the 
+    This is followed by another print, which is the
     accuracy of the updated network and the accuracy
-    of the previous network. 
+    of the previous network.
 
     Returns the best performing network in terms of accuracy
     ________
-    
+
     Arguments:
 
-    images = list of images 
+    images = list of images
     labels = list of labels
     epochs = integer
     batch_size = integer
@@ -142,7 +143,7 @@ def learn(images, labels, epochs, batch_size):
         batch_number = 0
         batches = create_batches(list(range(len(images))), batch_size)
 
-        for i in batches: 
+        for i in batches:
             batch_number += 1
             one_img_batch = [images[j] for j in i]
             one_lab_batch = [labels[j] for j in i]
@@ -152,8 +153,8 @@ def learn(images, labels, epochs, batch_size):
             if prev_acc <= acc:
                 print(f"\nNew record of accuracy achieved!\nCurrent Accuracy: {acc:.2f}\nPrevious Accuracy: {prev_acc:.2f}\n")
                 prev_acc = acc
-                best_network = network 
-            else: 
+                best_network = network
+            else:
                 print(f"\nAccuracy did not improve in this batch.\nCurrent Accuracy: {acc:.2f}\nPrevious Accuracy: {prev_acc:.2f}\n")
     print("******** FINISHED LEARNING ********")
     return best_network
@@ -162,25 +163,25 @@ def fast_learn(images, labels, epochs, batch_size):
     '''
     Description:
 
-    Initializes a network consisting of random weights and 
-    biases. The network is then trained using the "update" 
-    function over a batch of images and labels. 
-    For each epoch, the images are partioned 
-    into smaller batches of images and labels. 
+    Initializes a network consisting of random weights and
+    biases. The network is then trained using the "update"
+    function over a batch of images and labels.
+    For each epoch, the images are partioned
+    into smaller batches of images and labels.
     The network is succesively updated for each batch.
 
-    Furthermore, the function prints what 
+    Furthermore, the function prints what
     epoch and batch number it is currently training on.
-    This is followed by another print, which is the 
+    This is followed by another print, which is the
     accuracy of the updated network and the accuracy
-    of the previous network. 
+    of the previous network.
 
     Returns the best performing network in terms of accuracy
     ________
-    
+
     Arguments:
 
-    images = list of images 
+    images = list of images
     labels = list of labels
     epochs = integer
     batch_size = integer
@@ -198,7 +199,7 @@ def fast_learn(images, labels, epochs, batch_size):
         batch_number = 0
         batches = create_batches(list(range(len(images))), batch_size)
 
-        for i in batches: 
+        for i in batches:
             batch_number += 1
             one_img_batch = [images[j] for j in i]
             one_lab_batch = [labels[j] for j in i]
@@ -240,7 +241,7 @@ def update_CE(network, images, labels, sigma = 0.1):
 
     A_list_final = M.scalar_multiplication(A_list, (sigma * 1/len(images)))
     A = M.sub(A, A_list_final)
-    
+
     return [A, b[0]]
 
 def learn_CE(images, labels, epochs, batch_size): ## CURRENTLY *DOES NOT WORK* - PERFORMS TERRIBLY!!! Probably due to some misinterpretation in the derivative.
@@ -265,8 +266,8 @@ def learn_CE(images, labels, epochs, batch_size): ## CURRENTLY *DOES NOT WORK* -
             if prev_acc <= acc:
                 print(f"\nNew record of accuracy achieved!\nCurrent Accuracy: {acc:.2f}\nPrevious Accuracy: {prev_acc:.2f}\n")
                 prev_acc = acc
-                best_network = network 
-            else: 
+                best_network = network
+            else:
                 print(f"\nAccuracy did not improve in this batch.\nCurrent Accuracy: {acc:.2f}\nPrevious Accuracy: {prev_acc:.2f}\n")
     print("******** FINISHED LEARNING ********")
     return best_network
