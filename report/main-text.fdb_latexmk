@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1590865685 "c:/Users/Mikkel/Documents/PythonProjects/PythonFinalProject/NeuralPy/report/main-text.tex" "c:/Users/Mikkel/Documents/PythonProjects/PythonFinalProject/NeuralPy/report/main-text.pdf" "main-text" 1590865686
+["pdflatex"] 1590866641 "c:/Users/Mikkel/Documents/PythonProjects/PythonFinalProject/NeuralPy/report/main-text.tex" "c:/Users/Mikkel/Documents/PythonProjects/PythonFinalProject/NeuralPy/report/main-text.pdf" "main-text" 1590866643
   "../images/fast_network.png" 1590858366 50709 17ff6e2732f19bd0616e9f29b505c7a1 ""
   "../images/linear_network.png" 1590858365 69308 9b4bc0a53723ba2590cdb6c0dd402f7d ""
   "C:/Users/Mikkel/AppData/Local/MiKTeX/2.9/miktex/data/le/pdftex/pdflatex.fmt" 1584979965 9904387 0406f08e4bc387d63da27ba0913d94cc ""
@@ -89,15 +89,15 @@
   "C:/Users/Mikkel/AppData/Local/Programs/MiKTeX 2.9/tex/latex/titlesec/titlesec.sty" 1571243658 48596 2b6a95da931c07a430b1a61904aaa42d ""
   "C:/Users/Mikkel/AppData/Local/Programs/MiKTeX 2.9/tex/latex/tools/array.sty" 1580648484 12560 ce3f59ceae9d9a27bfe037d6bf1d903c ""
   "C:/Users/Mikkel/AppData/Local/Programs/MiKTeX 2.9/tex/latex/url/url.sty" 1388494052 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
-  "c:/Users/Mikkel/Documents/PythonProjects/PythonFinalProject/NeuralPy/report/main-text.aux" 1590865686 1902 31785ce363e3d847f2ea452a47afc200 ""
-  "c:/Users/Mikkel/Documents/PythonProjects/PythonFinalProject/NeuralPy/report/main-text.tex" 1590865643 10592 41c3effca2a6ecfd7b642da55b7aca37 ""
-  "main-text.aux" 1590865686 1902 31785ce363e3d847f2ea452a47afc200 "pdflatex"
-  "main-text.out" 1590865686 539 330b9977bbde8fed276f7169de12a3ae "pdflatex"
-  "main-text.tex" 1590865643 10592 41c3effca2a6ecfd7b642da55b7aca37 ""
+  "c:/Users/Mikkel/Documents/PythonProjects/PythonFinalProject/NeuralPy/report/main-text.aux" 1590866643 1902 31785ce363e3d847f2ea452a47afc200 ""
+  "c:/Users/Mikkel/Documents/PythonProjects/PythonFinalProject/NeuralPy/report/main-text.tex" 1590866640 10540 9078359956e1a834bde9d9d52cfdc18e ""
+  "main-text.aux" 1590866643 1902 31785ce363e3d847f2ea452a47afc200 "pdflatex"
+  "main-text.out" 1590866643 539 330b9977bbde8fed276f7169de12a3ae "pdflatex"
+  "main-text.tex" 1590866640 10540 9078359956e1a834bde9d9d52cfdc18e ""
   (generated)
-  "main-text.aux"
-  "main-text.pdf"
-  "main-text.out"
-  "c:/Users/Mikkel/Documents/PythonProjects/PythonFinalProject/NeuralPy/report/main-text.pdf"
-  "main-text.log"
   "c:/Users/Mikkel/Documents/PythonProjects/PythonFinalProject/NeuralPy/report/main-text.log"
+  "main-text.out"
+  "main-text.pdf"
+  "main-text.log"
+  "main-text.aux"
+  "c:/Users/Mikkel/Documents/PythonProjects/PythonFinalProject/NeuralPy/report/main-text.pdf"

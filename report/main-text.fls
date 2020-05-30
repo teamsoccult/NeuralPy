@@ -29,6 +29,14 @@ INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\array.st
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\array.sty
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\titlesec\titlesec.sty
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\titlesec\titlesec.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\subcaption.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\subcaption.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption3.sty
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption3.sty
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ltxcmds\ltxcmds.sty
@@ -57,8 +65,6 @@ INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\generic\intcalc\intc
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\generic\intcalc\intcalc.sty
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\generic\etexcmds\etexcmds.sty
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\generic\etexcmds\etexcmds.sty
-INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty
-INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\generic\bitset\bitset.sty
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\generic\bitset\bitset.sty
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\generic\bigintcalc\bigintcalc.sty
@@ -73,12 +79,6 @@ INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\rerunfilecheck
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\rerunfilecheck\rerunfilecheck.sty
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\generic\uniquecounter\uniquecounter.sty
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\generic\uniquecounter\uniquecounter.sty
-INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\subcaption.sty
-INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\subcaption.sty
-INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption.sty
-INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption.sty
-INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption3.sty
-INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption3.sty
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.sty
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.sty
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics.sty
@@ -155,12 +155,12 @@ INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\times\pt
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\times\ptmb7t.vf
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\times\ptmb8r.tfm
 INPUT C:\Users\Mikkel\AppData\Local\MiKTeX\2.9\pdftex\config\pdftex.map
-INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\times\ptmb7t.vf
-INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\times\ptmb8r.tfm
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\times\ptmr7t.vf
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\times\ptmr8r.tfm
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\courier\pcrr7t.vf
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\courier\pcrr8r.tfm
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\times\ptmb7t.vf
+INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\times\ptmb8r.tfm
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\times\ptmb7t.vf
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\adobe\times\ptmb8r.tfm
 INPUT C:\Users\Mikkel\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\adobe\times\zptmcm7m.vf
