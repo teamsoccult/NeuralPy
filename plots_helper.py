@@ -126,8 +126,8 @@ def plot_images_new(images, labels, index_list = 10, columns = 5, predictions = 
             if labels[index_list[(i*columns)+j]] == predictions[(i*columns)+j]:
                 axs[i,j].set_title(predictions[(i*columns)+j])
             else:
-                axs[i,j].imshow(images[index_list[i+j]], cmap = "Reds")
-                axs[i,j].set_title(f'{predictions[(i*columns)+j]}, correct {labels[index_list[i+j]]}', color = 'red')
+                axs[i,j].imshow(images[index_list[(i*columns)+j]], cmap = "Reds")
+                axs[i,j].set_title(f'{predictions[(i*columns)+j]}, correct {labels[index_list[(i*columns)+j]]}', color = 'red')
         total_img -= columns
     fig.tight_layout()
     return fig
