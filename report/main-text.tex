@@ -94,23 +94,57 @@ We were especially keen on testing the code properly, because a lack of testing 
 
 Besides implementing exceptions into our code to test that our functions work as intended, we also used doctest to test many of our functions - and to show the user examples of usage. This implementation was especially smooth and appropriate in the “math\_helper.py” document, because all the functions there revolve around mathematical operations in which it is easy to specify what the output should be. It was less clear for us how to use this approach for the functions related to plotting, as their output is different from a list or a number. The testing we did of our plotting functions consisted in trying to feed them different input and verify that they worked as intended. Examples of the functionality of our plotting functions can be found in “test.py”. 
 
-\newpage 
-
+\newpage
 \section{Appendix}
 
 In this section we show a brief collection of plots. 
 As we have shown the plots related to task O, 
 we will here showcase plots for tasks D and N. 
 
+The plots for this section were generated in 
+"learn.py". In order to save the images we modified 
+the plotting functions to return the figure. This has 
+the consequence of displaying two plots when the 
+function is run (as compared to only once when
+we simply called plot.show()). 
+
+\subsection{Task D}
+
+As mentioned earlier for task D, we created the function
+so that the user could control exactly which images to
+plot, and influence the arrangement of subplots. 
+Here we show examples of two such plots. 
 
 
 \begin{figure}[h]
-\caption{\textbf{weights comparison}}
 \centering
-\includegraphics[scale=0.4]{"../images/linear_network"}
-\subcaption{weights provided in task}
-\includegraphics[scale=0.4]{"../images/fast_network"}
-\subcaption{weights of our network}
+\caption{\textbf{plot\_images (task D)}}
+\includegraphics[scale=0.4]{"../images/appendix_plot_images_5_cols"}
+\subcaption{15 images plotted in a three by five grid}
+
+\includegraphics[scale=0.4]{"../images/appendix_plot_images_6_cols"}
+\subcaption{15 images plotted in a three by six grid}
+\end{figure}
+
+\newpage
+\subsection{Task N}
+
+Task N extends on task D in that the user has the 
+option of including predictions. Here, we show a 
+plot with predictions of the network we trained
+against the correct labels. Our network correctly
+classify the first thirty images. However, 
+the function plot\_images\_new
+returns exactly the same output as plot\_images when
+the predictions are correct. To showcase the
+difference the plot below is of images 30-40
+as our network makes errors here. 
+
+\begin{figure}[h]
+\caption{\textbf{plot\_images\_new (task N)}}
+\centering
+\includegraphics[scale=0.4]{"../images/appendix_plot_images_new_predictions"}
+\subcaption{images 30-40, predictions against hand-labels.}
 \end{figure}
 
 
