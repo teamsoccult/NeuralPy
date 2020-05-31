@@ -61,7 +61,7 @@ def plot_images(images, labels, index_list = 10, columns = 5):
             axs[i,j].axes.yaxis.set_visible(False)
         total_img -= columns
     fig.tight_layout()
-    plt.show()
+    return fig
 
 ### TASK N)
 
@@ -123,14 +123,14 @@ def plot_images_new(images, labels, index_list = 10, columns = 5, predictions = 
             axs[i,j].imshow(images[index_list[(i*columns)+j]], cmap = "binary")
             axs[i,j].axes.xaxis.set_visible(False)
             axs[i,j].axes.yaxis.set_visible(False)
-            if labels[i+j] == predictions[i+j]:
-                axs[i,j].set_title(predictions[index_list[(i*columns)+j]])
+            if labels[index_list[(i*columns)+j]] == predictions[(i*columns)+j]:
+                axs[i,j].set_title(predictions[(i*columns)+j])
             else:
                 axs[i,j].imshow(images[index_list[i+j]], cmap = "Reds")
-                axs[i,j].set_title(f'{predictions[index_list[(i*columns)+j]]}, correct {labels[index_list[i+j]]}', color = 'red')
+                axs[i,j].set_title(f'{predictions[(i*columns)+j]}, correct {labels[index_list[i+j]]}', color = 'red')
         total_img -= columns
     fig.tight_layout()
-    plt.show()
+    return fig
 
 ### TASK O)
 

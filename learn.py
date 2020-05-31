@@ -55,3 +55,25 @@ untrained_network = [[random.uniform(0, 1/784) for n in range(10)] for n in rang
 P.weights_plot(network[0]).savefig("images/linear_network.png")
 P.weights_plot(fast_network[0]).savefig("images/fast_network.png")
 P.weights_plot(untrained_network).savefig("images/untrained_network.png")
+
+### ADDITIONAL PLOTS
+
+#Plots from "plot_images"
+
+index_list = 15
+test = P.plot_images(images, labels, index_list, columns = 6) #optional argument
+P.plot_images(images, labels, index_list, columns = 5)
+
+#Plots from "plot_images_new"
+
+index_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+filename = {'images' : 't10k-images.idx3-ubyte' ,'labels' : 't10k-labels.idx1-ubyte'}
+images = RW.read_image(filename['images'])
+labels = RW.read_labels(filename['labels'])
+predictions = M.evaluate(fast_network, images, labels)[0]
+
+index_list = [x for x in range(30, 40)]
+
+P.plot_images_new(images, labels, index_list, 5, predictions[30:40])
+P.plot_images_new(images, labels, 20, 5)
+P.plot_images_new(images, labels)
